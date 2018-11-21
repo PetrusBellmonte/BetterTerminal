@@ -4,9 +4,9 @@ Servus alle zusammen,
 ich habe mal die Terminal-Klasse umgeschrieben, dass man mit ihr auch Testen kann.
 
 # "Installation"
- 1. Termin.java aus dem Ilias gegen die Neue austauschen
- 2. In Zeile 30 den Pfad zur Test-Datei eintragen
- 2. In Zeile 44 den Namen eurer Hauptklasse (mit der main-Methode) eintragen
+ 1. Terminal.java aus dem Ilias gegen die Neue austauschen
+ 2. In Zeile 30 den Pfad zur Test-Datei eintragen (Mit TODO markiert)
+ 2. In Zeile 44 den Namen eurer Hauptklasse (mit der main-Methode) eintragen (Mit TODO markiert)
 
 # Verhalten/Funktion
 *  Bei Starten eurere Main verhält sich die Terminal.java genau so wie die aus dem Ilias
@@ -28,7 +28,7 @@ Wenn Ein/Ausgaben nicht stimmen wird das mit Zeilenangabe (und selten auch begr�
 	- Natürlich!
 2. Ist das alles garantiert sicher?
 	- Nein?! Take it or leave it!
-3. Das kann man doch viel schöner machen? / Ich könnt das besser?!
+3. Das kann man doch viel schöner machen? / Ich könnt' das besser?!
 	- I don't care. (vgl 2.)
 4. Ich vermisse eine Funktion!
 	- Schreib mir, vlt finde ich die Zeit es rein zu coden.
