@@ -5,8 +5,8 @@ ich habe mal die Terminal-Klasse umgeschrieben, dass man mit ihr auch Testen kan
 
 # "Installation"
  1. Termin.java aus dem Ilias gegen die Neue austauschen
- 2. In Zeile 29 den Pfad zur Test-Datei eintragen
- 2. In Zeile 75 den Namen eurer Hauptklasse (mit der main-Methode) eintragen
+ 2. In Zeile 30 den Pfad zur Test-Datei eintragen
+ 2. In Zeile 44 den Namen eurer Hauptklasse (mit der main-Methode) eintragen
 
 # Verhalten/Funktion
 *  Bei Starten eurere Main verhält sich die Terminal.java genau so wie die aus dem Ilias
