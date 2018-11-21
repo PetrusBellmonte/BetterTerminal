@@ -1,0 +1,3888 @@
+//Testing invalid Startings
+// to many argumens
+# torus 18 3 2 5
+Error.*
+# standard 20 4 moin
+Error.*
+# standard 20
+Error.*
+
+//Size is too big
+# torus 32 3
+Error.*
+//Size not even
+# torus 19 3
+Error.*
+//size too small
+# torus 16 3
+Error.*
+# torus 16 3
+Error.*
+//playercount too big
+# torus 18 5
+Error.*
+# torus 18 12
+Error.*
+//playercount too big
+# torus 18 1
+Error.*
+# torus 18 -3
+Error.*
+# torus 18 5
+Error.*
+
+//Same for standard
+//Size is too big
+# standard 32 3
+Error.*
+//Size not even
+# standard 19 3
+Error.*
+//size too small
+# standard 16 3
+Error.*
+//playercount too big
+# standard 18 5
+Error.*
+# standard 18 12
+Error.*
+//playercount too big
+# standard 18 1
+Error.*
+# standard 18 -3
+Error.*
+
+//False mode
+# standart 18 3
+Error.*
+# stantard 18 3
+Error.*
+# tauros 18 3
+Error.*
+# toros 18 3
+Error.*
+# unicorn 18 3
+Error.*
+
+//False Type
+# torus hi 3
+Error.*
+# torus 18 so
+Error.*
+# torus 18759754769371538539274 3
+Error.*
+# torus 18 39567382645582914534
+Error.*
+# torus 18.20 3
+Error.*
+# torus 18 3.56
+Error.*
+
+//Missing Args
+# torus 18
+Error.*
+# torus  3
+Error.*
+# torus 18    3
+Error.*
+$ argument-tests finished
+
+//Some stupid commands
+# standard 18 4
+> places 1;2;3;4
+Error.*
+> unicorn
+Error.*
+> i am batman
+Error.*
+> quit
+$ Random command-tests finished
+
+//Testing Value-Errors for placecommand
+# standard 18 4
+> place 1;2;1;2
+Error.*
+> place 18;2;1;3
+Error.*
+> place 0;18;4;3
+Error.*
+> place 1;2;18;3
+Error.*
+> place 1;2;4;18
+Error.*
+> place -1;2;4;3
+Error.*
+> place 1;-2;4;3
+Error.*
+> quit
+# torus 18 4
+> place 1;2;4;334546467534345342324324
+Error.*
+> place 1;2;4345345345345345345543234;3
+Error.*
+> place 1;2432354354354754342345;4;3
+Error.*
+> place 123443543654765345345834343;2;4;3
+Error.*
+//InputErrors
+> place 1; 2; 4; 3
+Error.*
+> place 1 2 4 3
+Error.*
+> place 1;2;4;
+Error.*
+> place 1;2;;3
+Error.*
+> place 1;2;3
+Error.*
+> place 1:2:4:3
+Error.*
+> place 1,2,4,3
+Error.*
+> place 0;1;2;3;
+Error.*
+> place 0;1;2;3;6
+Error.*
+> place 0;1;2;3 6
+Error.*
+> place 0;1;2;3 moin
+Error.*
+> quit
+$ Invalid place-command-tests finished
+
+//Testing Value-Errors for state-command
+# standard 18 4
+> state 18;2
+Error.*
+> state 0;18
+Error.*
+> state -1;2
+Error.*
+> state 1;-2
+Error.*
+> quit
+# torus 18 4
+> state 1;2432354354354754342345
+Error.*
+> state 123443543654765345345834343;2
+Error.*
+//InputErrors
+> state 1; 2
+Error.*
+> state 1 2
+Error.*
+> state 2;;3
+Error.*
+> state 1:2
+Error.*
+> state 1,2
+Error.*
+> state 1;2;
+Error.*
+> state 1;2 yeaaahr
+Error.*
+> state 1;2;7
+Error.*
+> quit
+$ Invalid state-command-tests finished
+
+//reset-Command
+# standard 18 3
+> place 0;1;2;3
+OK
+> place 9;10;11;12
+OK
+> place 15;14;17;16
+OK
+> place 2;5;18;2
+Error.*
+> place 3;6;2;9
+OK
+> state 2;9
+P1
+> reset
+OK
+> state 2;9
+\*\*
+> place 17;17;0;0
+OK
+> place 18;1;2;3
+Error.*
+> place 9;5;-1;3
+Error.*
+> quit
+# torus 20 2
+> place 19;0;1;18
+OK
+> place 20;0;12;-1
+OK
+> state 0;0
+P2
+> reset
+OK
+> state 0;0
+\*\*
+> place 13;24;36;42
+OK
+> place -5;15;-25;34
+OK
+> place 1;2;3;4
+OK
+> state -17;4
+P1
+> quit
+$ Reset-Tests finished
+
+//Invalid Row and colums
+# torus 18 3
+> rowprint
+Error.*
+> rowprint hi
+Error.*
+> rowprint -2
+Error.*
+> rowprint 20
+Error.*
+> colprint
+Error.*
+> colprint hi
+Error.*
+> colprint 19
+Error.*
+> colprint -1
+Error.*
+> quit
+$ Invalid rowprint- & colprint-commands tests finished
+
+//Print tests
+# torus 18 2
+> place 0;0;1;1
+OK
+> print 1
+Error.*
+> print 1;2
+Error.*
+> print 1 2
+Error.*
+> quit
+$ Invalid print-commands-tests finished
+
+//Print tests
+# torus 18 2
+> place 0;0;1;1
+OK
+> reset 1
+Error.*
+> reset 1;2
+Error.*
+> reset 1 2
+Error.*
+> quit
+$ Invalid reset-commands tests finished
+
+//Check some Winnings
+# standard 18 2
+> place 4;2;13;12
+OK
+> place 3;6;12;9
+OK
+> place 6;9;7;1
+OK
+> place 0;15;16;1
+OK
+> place 1;2;15;11
+OK
+> place 7;2;5;15
+OK
+> place 9;6;13;10
+OK
+> place 4;3;7;6
+OK
+> place 16;16;11;17
+OK
+> place 14;14;13;9
+OK
+> place 0;6;16;2
+OK
+> place 2;2;3;16
+OK
+> place 12;14;2;17
+OK
+> place 6;4;9;15
+OK
+> place 14;13;5;16
+OK
+> place 5;7;11;8
+OK
+> place 6;7;14;7
+OK
+> place 12;15;5;13
+OK
+> place 1;0;16;6
+OK
+> place 11;10;8;9
+OK
+> place 10;5;6;5
+OK
+> place 14;12;3;14
+OK
+> place 2;5;11;7
+OK
+> place 3;0;17;1
+OK
+> place 14;1;17;2
+OK
+> place 10;8;6;16
+OK
+> place 11;11;9;16
+OK
+> place 0;3;2;16
+OK
+> place 15;13;4;4
+OK
+> place 4;1;8;15
+OK
+> place 16;4;5;0
+OK
+> place 17;9;16;13
+OK
+> place 9;2;5;8
+OK
+> place 12;13;16;5
+OK
+> place 15;5;11;5
+OK
+> place 12;3;1;9
+OK
+> place 8;2;17;8
+OK
+> place 13;7;17;17
+OK
+> place 8;16;6;3
+OK
+> place 4;5;9;3
+OK
+> place 15;1;2;9
+OK
+> place 1;1;4;17
+OK
+> place 5;14;17;6
+OK
+> place 0;17;17;11
+OK
+> place 11;15;7;17
+OK
+> place 10;0;5;3
+OK
+> place 10;15;13;2
+OK
+> place 15;6;5;17
+OK
+> place 10;9;6;17
+OK
+> place 2;10;13;13
+OK
+> place 1;4;8;8
+OK
+> place 1;5;2;8
+OK
+> place 4;6;15;15
+OK
+> place 13;5;9;13
+OK
+> place 4;10;1;6
+OK
+> place 10;14;14;0
+OK
+> place 17;12;6;15
+OK
+> place 16;17;11;14
+OK
+> place 4;8;17;14
+OK
+> place 1;11;6;6
+OK
+> place 1;8;2;15
+OK
+> colprint 9
+\*\* P2 P1 \*\* \*\* \*\* P1 \*\* P2 \*\* P1 \*\* P2 P2 \*\* \*\* \*\* P2
+> place 9;1;4;9
+OK
+> place 13;8;0;12
+OK
+> place 8;3;12;1
+OK
+> place 7;3;6;13
+OK
+> place 5;1;15;0
+OK
+> place 9;12;10;3
+OK
+> place 17;7;14;4
+OK
+> place 16;8;13;6
+OK
+> place 12;5;16;7
+OK
+> place 11;1;7;7
+OK
+> place 2;12;13;3
+OK
+> place 12;10;15;17
+OK
+> place 15;10;1;17
+OK
+> place 11;3;15;3
+OK
+> place 1;7;12;11
+OK
+> place 0;8;11;9
+OK
+> place 0;9;7;14
+OK
+> place 14;17;10;13
+OK
+> place 16;3;0;11
+OK
+> place 6;11;1;12
+OK
+> place 9;7;11;16
+OK
+> place 12;6;5;6
+OK
+> place 7;10;4;7
+OK
+> place 2;1;1;10
+OK
+> place 17;13;5;5
+OK
+> place 4;12;9;10
+OK
+> place 14;8;0;13
+OK
+> print
+\*\* \*\* \*\* P2 \*\* \*\* P1 \*\* P1 P2 \*\* P2 P1 P2 \*\* P2 \*\* P2
+P1 P2 P1 \*\* P1 P2 P1 P2 P1 P2 P1 P2 P1 \*\* \*\* \*\* \*\* P2
+\*\* P1 P2 \*\* \*\* P1 \*\* \*\* P2 P1 P2 \*\* P2 \*\* \*\* P1 P2 P1
+P2 \*\* \*\* \*\* \*\* \*\* P2 \*\* \*\* \*\* \*\* \*\* \*\* \*\* P2 \*\* P2 \*\*
+\*\* P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 \*\* P1 \*\* \*\* \*\* \*\* P2
+P1 P2 \*\* P2 \*\* P2 P1 P2 P1 \*\* \*\* \*\* \*\* P2 P1 P2 P1 P2
+\*\* \*\* \*\* P1 P2 P1 P2 P1 \*\* P1 \*\* P1 \*\* P1 \*\* P1 P2 P1
+\*\* P1 P2 P1 \*\* \*\* P2 P1 \*\* \*\* P2 \*\* \*\* \*\* P2 \*\* \*\* P1
+\*\* \*\* P1 P2 \*\* \*\* \*\* \*\* P1 P2 \*\* \*\* \*\* \*\* \*\* P2 P1 \*\*
+\*\* P2 P1 P2 \*\* \*\* P1 P2 \*\* \*\* P1 \*\* P1 P2 \*\* P2 P1 \*\*
+P2 \*\* \*\* P1 \*\* P1 \*\* \*\* P2 P1 \*\* \*\* \*\* P1 P2 P1 \*\* \*\*
+\*\* P1 \*\* P1 \*\* P1 \*\* P1 P2 P1 P2 P1 \*\* \*\* P2 P1 P2 P1
+\*\* P2 \*\* P2 \*\* P2 P1 \*\* \*\* P2 P1 P2 \*\* P2 P1 P2 \*\* \*\*
+\*\* \*\* P1 P2 \*\* P2 P1 P2 P1 P2 P1 \*\* P1 P2 \*\* \*\* \*\* \*\*
+P2 P1 \*\* \*\* P2 \*\* \*\* P1 P2 \*\* \*\* \*\* P2 P1 P2 \*\* \*\* P1
+P2 P1 \*\* P1 \*\* P1 P2 \*\* \*\* \*\* P2 P1 \*\* P1 \*\* P1 \*\* P1
+\*\* P2 P1 P2 P1 P2 P1 P2 P1 \*\* \*\* \*\* \*\* P2 \*\* \*\* P1 P2
+\*\* P2 P1 \*\* \*\* \*\* P1 P2 P1 P2 \*\* P2 P1 P2 P1 \*\* \*\* P2
+> place 16;14;8;12
+OK
+> place 0;7;2;4
+OK
+> place 13;0;5;10
+OK
+> place 2;6;3;8
+OK
+> place 3;17;8;0
+OK
+> place 10;6;10;4
+OK
+> place 0;4;10;7
+OK
+> place 12;17;17;15
+OK
+> place 8;14;4;0
+OK
+> place 3;10;11;12
+OK
+> place 16;12;14;5
+OK
+> place 3;12;4;15
+OK
+> place 7;5;6;1
+OK
+> place 10;2;1;13
+OK
+> place 14;3;7;11
+OK
+> place 16;9;8;1
+OK
+> place 9;4;0;0
+OK
+> place 17;5;10;12
+OK
+> place 17;10;10;17
+OK
+> place 1;3;8;13
+OK
+> place 10;11;12;0
+OK
+> place 8;17;3;2
+OK
+> place 5;12;14;11
+OK
+> place 11;0;8;11
+OK
+> place 3;13;17;4
+OK
+> place 15;8;13;15
+OK
+> place 17;16;7;15
+OK
+> place 13;11;6;14
+OK
+> place 0;14;12;16
+OK
+> place 16;15;6;12
+OK
+> place 12;2;14;15
+OK
+> rowprint 16
+\*\* P2 P1 P2 P1 P2 P1 P2 P1 P2 \*\* \*\* P1 P2 P1 P2 P1 P2
+> place 7;0;14;16
+OK
+> place 1;14;9;14
+OK
+> place 7;16;1;15
+OK
+> place 12;4;2;7
+OK
+> place 7;4;8;7
+OK
+> place 16;0;13;16
+OK
+> place 15;2;14;2
+OK
+> place 1;16;9;8
+OK
+> place 15;12;15;14
+OK
+> place 3;5;11;13
+OK
+> place 0;5;13;17
+OK
+> place 12;8;7;13
+OK
+> place 6;2;11;4
+OK
+> place 0;2;3;9
+OK
+> place 17;3;13;1
+OK
+> place 5;2;13;4
+OK
+> place 10;16;8;5
+OK
+> place 3;7;0;16
+OK
+> place 6;8;9;11
+OK
+> place 3;1;14;9
+OK
+> place 10;10;6;10
+OK
+> place 2;13;15;7
+OK
+> place 12;7;3;4
+OK
+> place 4;16;13;14
+OK
+> place 4;13;5;11
+OK
+> place 8;6;3;3
+OK
+> place 15;4;14;10
+OK
+> place 12;12;4;14
+OK
+> place 2;14;5;9
+OK
+> rowprint 2
+\*\* P1 P2 \*\* P2 P1 P2 P1 P2 P1 P2 \*\* P2 P1 P2 P1 P2 P1
+> colprint 14
+P1 P1 P2 P2 P1 P1 P2 P2 P1 P1 P2 P2 P1 P1 P2 P2 P1 P1
+> place 3;15;7;9
+OK
+> place 6;0;9;5
+OK
+> place 15;9;10;1
+OK
+> place 7;8;9;17
+OK
+> place 8;10;16;10
+OK
+> place 11;6;14;6
+OK
+> place 8;4;9;0
+OK
+> place 7;12;2;0
+OK
+> place 3;11;5;4
+OK
+> place 0;1;16;11
+OK
+> place 0;10;2;3
+OK
+> place 9;9;11;2
+OK
+> place 17;0;2;11
+OK
+> place 15;16;4;11
+draw
+> print
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2 P1 P2
+$ Draw-test finished
+> place 0;0;1;2
+Error.*
+// lu-ro
+> reset
+OK
+> place 8;9;7;8
+OK
+> place 6;7;4;5
+OK
+> place 3;4;2;3
+OK
+> place 5;4;6;3
+OK
+> place 1;2;9;10
+OK
+> place 3;6;2;7
+OK
+> place 5;6;7;2
+OK
+> place 1;8;5;8
+P2 wins
+> state 5;8
+P2
+> place 15;2;9;10
+Error.*
+> state 15;2
+\*\*
+> reset
+OK
+//r-l
+> place 16;16;17;17
+OK
+> place 9;10;7;10
+OK
+> place 0;0;1;1
+OK
+> place 5;10;10;10
+OK
+> place 15;15;2;2
+OK
+> place 6;10;8;10
+P2 wins
+> place 9;9;10;15
+Error.*
+> reset
+OK
+//lo-ru
+> place 9;8;8;7
+OK
+> place 15;2;15;3
+OK
+> place 5;4;3;2
+OK
+> place 16;3;17;2
+OK
+> place 7;6;10;9
+OK
+> place 14;5;13;6
+OK
+> place 4;3;2;1
+OK
+> place 15;5;15;6
+OK
+> place 1;0;11;10
+OK
+> place 15;4;16;2
+OK
+> place 6;5;17;2
+Error.*
+> state 6;5
+\*\*
+> place 6;5;12;7
+P1 wins
+// o-u
+> reset
+OK
+> place 8;3;8;4
+OK
+> place 3;15;4;15
+OK
+> place 8;5;8;6
+OK
+> place 8;7;5;15
+OK
+> place 8;9;8;8
+OK
+> place 2;14;4;16
+OK
+> place 8;2;8;1
+P1 wins
+> reset
+OK
+> place 9;8;8;7
+OK
+> place 7;6;8;5
+OK
+> place 6;7;7;7
+OK
+> place 10;7;9;6
+OK
+> place 5;7;4;7
+OK
+> place 9;7;3;7
+OK
+> place 11;8;7;4
+OK
+> place 8;6;10;6
+OK
+> place 11;6;6;6
+OK
+> place 10;8;10;5
+OK
+> place 10;9;10;4
+OK
+> place 9;5;11;5
+OK
+> place 12;5;7;5
+OK
+> place 9;4;9;3
+OK
+> place 9;2;4;8
+OK
+> place 3;9;12;4
+OK
+> place 8;8;13;3
+OK
+> place 11;7;12;8
+OK
+> place 8;4;13;9
+OK
+> place 10;3;11;2
+OK
+> place 12;1;5;5
+OK
+> place 4;4;9;9
+OK
+> place 6;5;6;8
+OK
+> place 6;9;6;4
+OK
+> place 5;6;8;3
+P1 wins
+> print
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* P2 \*\* P2 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* P2 \*\* \*\* P1 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* P1 P1 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* P2 P1 P1 P1 P1 P2 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* P1 P1 P2 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* P1 P1 P2 P2 P1 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* P1 P2 P2 P2 P2 P2 P1 P2 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* P2 P1 P2 P2 P2 P2 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* P2 \*\* \*\* P2 P1 P2 P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* P1 \*\* \*\* P2 P1 \*\* \*\* P2 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* P1 \*\* \*\* \*\* \*\* \*\* P1 \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+\*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\* \*\*
+> quit
+$ Standard-Tests finished
+# torus 20 3
+> place 15;18;0;14
+OK
+> place 3;19;9;10
+OK
+> place 8;6;14;4
+OK
+> place 17;19;16;19
+OK
+> place 5;14;1;12
+OK
+> place 12;3;14;1
+OK
+> place 3;2;8;5
+OK
+> place 7;14;17;4
+OK
+> place 19;15;16;15
+OK
+> place 6;16;18;0
+OK
+> place 17;17;2;6
+OK
+> place 2;17;13;12
+OK
+> place 19;14;15;3
+OK
+> place 1;6;18;2
+OK
+> place 12;17;7;3
+OK
+> place 16;13;18;3
+OK
+> place 3;8;13;9
+OK
+> place 3;14;5;3
+OK
+> place 17;0;4;7
+OK
+> place 5;17;19;5
+OK
+> place 17;10;5;11
+OK
+> place 15;16;4;16
+OK
+> place 7;2;15;6
+OK
+> place 2;8;7;13
+OK
+> place 18;8;18;9
+OK
+> place 16;5;8;9
+OK
+> place 13;17;3;12
+OK
+> place 13;14;11;5
+OK
+> place 16;0;9;2
+OK
+> place 19;13;16;14
+OK
+> place 12;10;2;10
+OK
+> place 1;3;18;17
+OK
+> place 2;2;17;16
+OK
+> place 6;8;0;10
+OK
+> place 4;0;0;1
+OK
+> place 9;8;10;7
+OK
+> place 6;5;2;18
+OK
+> place 10;8;14;11
+OK
+> place 19;8;19;0
+OK
+> place 5;19;10;18
+OK
+> place 0;8;11;14
+OK
+> place 8;13;13;16
+OK
+> place 16;7;6;18
+OK
+> place 1;1;3;16
+OK
+> place 15;7;2;13
+OK
+> place 4;17;9;12
+OK
+> place 4;13;11;13
+OK
+> place 2;19;10;6
+OK
+> place 19;2;4;9
+OK
+> place 2;12;1;18
+OK
+> place 13;5;19;6
+OK
+> place 14;7;7;16
+OK
+> place 15;9;1;4
+OK
+> place 8;15;10;12
+OK
+> place 7;1;0;13
+OK
+> place 4;11;12;4
+OK
+> place 18;16;13;6
+OK
+> place 8;0;3;4
+OK
+> place 6;17;9;14
+OK
+> place 8;2;18;18
+OK
+> place 3;9;3;1
+OK
+> place 18;13;3;5
+OK
+> place 18;5;12;16
+OK
+> place 1;16;5;6
+OK
+> place 15;12;11;3
+OK
+> place 1;0;13;13
+OK
+> place 12;19;10;3
+OK
+> place 19;4;7;11
+OK
+> place 14;12;10;13
+OK
+> place 0;9;14;10
+OK
+> place 18;14;6;7
+OK
+> place 14;18;17;11
+OK
+> place 18;19;4;19
+OK
+> place 15;19;9;6
+OK
+> place 18;10;14;0
+OK
+> place 16;9;14;8
+OK
+> place 0;0;15;11
+OK
+> place 11;19;19;3
+OK
+> place 17;5;0;17
+OK
+> place 19;17;11;7
+OK
+> place 0;16;9;16
+OK
+> place 16;18;19;1
+OK
+> place 5;15;11;6
+OK
+> place 10;17;5;1
+OK
+> place 9;13;1;13
+OK
+> place 13;11;13;1
+OK
+> place 6;0;11;11
+OK
+> place 7;8;0;5
+OK
+> place 14;15;0;12
+OK
+> place 17;18;7;15
+OK
+> place 16;3;16;16
+OK
+> place 16;12;3;6
+OK
+> place 19;19;15;5
+OK
+> place 16;6;8;16
+OK
+> place 1;11;6;15
+OK
+> place 10;10;16;1
+OK
+> place 7;0;11;12
+OK
+> place 7;12;9;3
+OK
+> place 19;10;10;0
+OK
+> place 1;9;7;9
+OK
+> place 4;6;15;17
+OK
+> place 4;8;13;0
+OK
+> place 11;18;12;9
+OK
+> place 12;13;5;9
+OK
+> place 19;9;15;13
+OK
+> place 12;7;3;13
+OK
+> place 12;1;10;1
+OK
+> place 12;15;10;5
+OK
+> place 17;12;4;18
+OK
+> place 8;11;10;2
+OK
+> place 13;2;8;8
+OK
+> rowprint 11
+\*\* \*\* \*\* P2 \*\* P1 P2 P2 \*\* \*\* \*\* P3 P1 P2 P2 \*\* \*\* \*\* P1 P3
+> place 3;15;4;1
+OK
+> place 11;2;3;11
+OK
+> place 10;4;9;9
+OK
+> place 5;0;12;2
+OK
+> place 13;10;14;14
+OK
+> place 7;5;8;10
+OK
+> place 0;11;1;14
+OK
+> place 18;12;3;3
+OK
+> place 13;19;4;4
+OK
+> place 9;18;7;19
+OK
+> place 5;18;3;18
+OK
+> place 3;10;17;9
+OK
+> place 18;15;15;14
+OK
+> place 8;7;2;11
+OK
+> place 12;5;12;6
+OK
+> place 12;11;1;8
+OK
+> place 18;4;0;19
+OK
+> place 7;4;17;8
+OK
+> place 6;3;6;10
+OK
+> place 17;7;0;3
+OK
+> place 15;4;11;0
+OK
+> place 17;6;16;2
+OK
+> place 11;10;0;2
+OK
+> place 13;8;11;17
+OK
+> place 8;12;1;19
+OK
+> place 7;7;10;11
+OK
+> place 7;18;6;2
+OK
+> place 5;5;13;3
+OK
+> place 19;7;10;14
+OK
+> place 10;16;4;15
+OK
+> place 19;16;15;1
+OK
+> place 14;2;2;3
+OK
+> place 17;13;13;7
+OK
+> place 16;11;18;7
+OK
+> place 0;7;2;1
+OK
+> place 8;1;0;6
+OK
+> place 18;6;19;18
+OK
+> place 8;3;2;16
+OK
+> place 8;14;11;16
+OK
+> place 5;13;9;17
+OK
+> place 15;10;5;16
+OK
+> place 19;12;8;19
+OK
+> place 2;0;4;3
+OK
+> place 17;15;15;2
+OK
+> place 18;11;13;15
+OK
+> place 15;8;11;4
+OK
+> place 2;14;4;10
+OK
+> place 16;10;1;17
+OK
+> place 14;16;5;12
+OK
+> place 17;3;6;1
+OK
+> place 9;0;0;18
+OK
+> place 11;9;9;11
+OK
+> place 5;7;6;6
+OK
+> place 9;7;4;14
+OK
+> place 5;8;14;6
+OK
+> place 4;2;12;0
+OK
+> place 18;1;14;17
+OK
+> place 12;12;9;4
+OK
+> place 7;10;3;17
+OK
+> place 1;10;15;15
+OK
+> place 10;15;7;17
+OK
+> place 13;18;4;12
+OK
+> place 14;19;0;15
+OK
+> place 1;7;6;19
+OK
+> place 14;3;14;5
+OK
+> place 16;4;8;4
+OK
+> place 6;13;9;1
+OK
+> place 2;5;10;19
+OK
+> place 15;0;0;4
+OK
+> place 8;17;16;17
+OK
+> place 16;8;9;5
+OK
+> place 11;1;12;14
+OK
+> place 8;18;2;9
+OK
+> place 1;2;12;8
+OK
+> place 6;12;2;7
+OK
+> place 2;4;17;2
+OK
+> place 5;4;11;8
+OK
+> place 17;14;13;4
+OK
+> place 12;18;3;7
+OK
+> place 6;9;14;9
+OK
+> place 1;15;4;5
+OK
+> place 3;0;17;1
+OK
+> place 6;14;14;13
+OK
+> place 5;10;9;19
+OK
+> place 1;5;7;6
+OK
+> place 2;15;19;11
+OK
+> place 6;4;11;15
+OK
+> place 6;11;9;15
+OK
+> place 5;2;10;9
+draw
+> print
+P2 P2 P2 P2 P3 P1 P3 P2 P2 P1 P1 P1 P2 P1 P1 P3 P3 P1 P3 P2
+P3 P2 P2 P2 P2 P1 P2 P1 P1 P1 P3 P2 P2 P1 P1 P3 P1 P3 P2 P1
+P1 P2 P3 P2 P1 P2 P2 P3 P3 P1 P1 P2 P2 P3 P2 P2 P2 P3 P1 P3
+P1 P1 P1 P2 P1 P2 P2 P1 P2 P1 P3 P2 P3 P1 P3 P1 P2 P2 P2 P2
+P2 P1 P2 P1 P3 P3 P2 P1 P3 P1 P2 P2 P2 P2 P3 P3 P1 P1 P1 P1
+P1 P3 P2 P3 P2 P1 P1 P2 P1 P2 P3 P3 P1 P1 P2 P2 P2 P2 P2 P1
+P3 P2 P3 P1 P3 P1 P2 P2 P1 P2 P1 P1 P3 P1 P2 P2 P1 P2 P1 P1
+P1 P1 P2 P3 P3 P3 P1 P2 P1 P1 P2 P2 P2 P3 P2 P3 P1 P1 P3 P1
+P1 P3 P3 P2 P3 P1 P3 P2 P3 P2 P3 P2 P1 P3 P3 P3 P1 P1 P1 P3
+P3 P1 P2 P2 P1 P2 P2 P3 P3 P3 P2 P1 P1 P1 P2 P1 P3 P1 P1 P3
+P3 P2 P2 P1 P3 P3 P3 P3 P2 P2 P3 P2 P3 P3 P2 P1 P3 P3 P1 P2
+P3 P3 P2 P2 P1 P1 P2 P2 P2 P1 P2 P3 P1 P2 P2 P3 P3 P3 P1 P3
+P2 P2 P1 P3 P2 P3 P3 P1 P2 P1 P1 P1 P1 P2 P3 P3 P3 P3 P1 P1
+P3 P2 P3 P1 P3 P3 P3 P3 P3 P2 P2 P2 P3 P3 P1 P3 P3 P3 P2 P3
+P3 P3 P2 P2 P3 P2 P1 P1 P1 P2 P1 P2 P3 P2 P2 P2 P1 P3 P3 P3
+P3 P1 P2 P1 P3 P3 P2 P3 P1 P2 P2 P2 P2 P3 P1 P3 P1 P2 P1 P2
+P2 P3 P1 P1 P3 P2 P1 P1 P2 P1 P3 P1 P2 P1 P3 P3 P1 P1 P1 P1
+P1 P1 P1 P2 P2 P1 P1 P2 P3 P3 P3 P3 P1 P3 P3 P2 P3 P2 P3 P1
+P1 P3 P2 P1 P2 P3 P1 P1 P1 P1 P3 P3 P2 P2 P2 P1 P3 P2 P3 P1
+P3 P1 P1 P3 P2 P2 P3 P2 P3 P3 P3 P2 P3 P3 P1 P3 P1 P2 P1 P3
+> reset
+OK
+> quit
+$ draw-tests finished
+
+# torus 20 4
+> place 9;15;5;16
+OK
+> place 6;18;11;7
+OK
+> place 13;7;1;9
+OK
+> place 7;5;11;11
+OK
+> place 5;3;6;8
+OK
+> place 13;9;12;9
+OK
+> place 6;1;15;7
+OK
+> place 17;11;13;17
+OK
+> place 10;9;11;18
+OK
+> place 4;5;0;12
+OK
+> place 3;11;7;4
+OK
+> place 4;13;14;14
+OK
+> place 6;10;8;2
+OK
+> place 5;8;14;10
+OK
+> place 17;18;14;0
+OK
+> place 0;11;9;7
+OK
+> place 18;17;15;3
+OK
+> place 13;12;6;16
+OK
+> place 1;1;12;5
+OK
+> place 14;12;2;12
+OK
+> place 11;5;11;0
+OK
+> place 8;3;9;11
+OK
+> place 8;9;5;19
+OK
+> place 13;3;19;17
+OK
+> place 14;5;1;3
+OK
+> place 8;13;0;4
+OK
+> place 9;2;17;1
+OK
+> place 7;9;5;5
+OK
+> place 19;5;8;19
+OK
+> place 3;16;0;15
+OK
+> place 8;1;3;0
+OK
+> place 12;18;11;8
+OK
+> place 10;16;17;14
+OK
+> place 14;4;3;17
+OK
+> place 8;17;6;15
+OK
+> place 0;7;15;0
+OK
+> place 10;15;1;6
+OK
+> place 9;13;1;16
+OK
+> place 2;9;12;0
+OK
+> place 19;10;17;17
+OK
+> place 17;2;12;3
+OK
+> place 10;0;2;15
+OK
+> place 16;6;16;13
+OK
+> place 16;2;10;12
+OK
+> place 1;2;1;19
+OK
+> place 15;5;9;0
+OK
+> place 0;14;7;6
+OK
+> place 8;10;4;12
+OK
+> place 9;9;8;6
+OK
+> place 13;15;10;19
+OK
+> place 17;6;15;11
+OK
+> place 16;5;7;8
+OK
+> place 2;11;4;2
+OK
+> place 11;4;19;7
+OK
+> place 15;12;5;2
+OK
+> place 10;3;5;7
+OK
+> place 13;4;13;18
+OK
+> place 8;4;3;1
+OK
+> place 14;8;7;2
+OK
+> place 17;19;9;19
+OK
+> place 7;17;4;3
+OK
+> place 5;10;19;18
+OK
+> place 16;11;8;11
+OK
+> place 11;16;14;1
+OK
+> place 18;1;10;13
+OK
+> place 6;2;2;0
+OK
+> place 4;8;18;0
+OK
+> place 3;8;3;14
+OK
+> place 4;6;2;10
+OK
+> place 16;3;6;5
+OK
+> place 10;11;5;0
+OK
+> place 0;9;16;15
+OK
+> place 8;5;14;11
+OK
+> place 18;5;3;12
+OK
+> place 10;5;8;15
+OK
+> place 8;0;11;13
+OK
+> place 18;7;12;2
+OK
+> place 1;15;11;6
+OK
+> place 6;12;11;14
+OK
+> place 11;2;7;3
+OK
+> place 1;5;2;13
+OK
+> place 10;10;17;3
+OK
+> place 9;16;3;13
+OK
+> place 15;15;4;16
+OK
+> place 3;15;16;7
+OK
+> place 3;7;18;8
+OK
+> place 9;6;19;16
+OK
+> place 15;17;9;14
+OK
+> place 12;4;19;2
+OK
+> place 14;18;9;5
+OK
+> place 0;5;17;7
+OK
+> place 6;6;4;17
+OK
+> place 16;10;14;16
+OK
+> place 18;6;16;8
+OK
+> place 7;14;7;11
+OK
+> place 18;2;14;19
+OK
+> place 8;8;15;9
+OK
+> place 16;19;18;16
+OK
+> place 0;0;12;1
+OK
+> place 17;0;1;4
+OK
+> place 3;3;19;6
+OK
+> place 15;8;12;16
+OK
+> colprint 9
+P4 P3 P3 \*\* \*\* \*\* \*\* P4 P3 P1 P1 \*\* P2 P2 \*\* P1 \*\* \*\* \*\* \*\*
+> place 0;8;5;11
+OK
+> place 15;1;13;8
+OK
+> place 6;19;14;7
+OK
+> place 4;0;19;14
+OK
+> place 18;12;19;15
+OK
+> place 11;9;17;8
+OK
+> place 19;3;18;13
+OK
+> place 1;10;18;11
+OK
+> place 19;4;3;4
+OK
+> place 2;17;6;4
+OK
+> place 2;2;15;10
+OK
+> place 4;1;5;13
+OK
+> place 15;4;7;16
+OK
+> place 12;7;8;12
+OK
+> place 7;12;19;12
+OK
+> place 17;5;11;3
+OK
+> place 7;15;4;11
+OK
+> place 9;4;10;7
+OK
+> place 0;6;14;17
+OK
+> place 2;14;9;3
+OK
+> place 1;14;8;18
+OK
+> place 16;0;6;13
+OK
+> place 17;9;13;5
+OK
+> place 11;17;15;14
+OK
+> place 19;0;7;10
+OK
+> place 13;13;18;19
+OK
+> place 9;8;14;9
+OK
+> place 4;10;5;4
+OK
+> place 15;16;6;11
+P3 wins
+> print
+P3 \*\* \*\* \*\* P2 P3 P1 P4 P3 P4 \*\* P4 P2 \*\* P3 P2 \*\* \*\* \*\* \*\*
+\*\* P3 P1 P1 P4 P1 P1 \*\* \*\* P3 P2 \*\* \*\* \*\* P3 P2 P2 \*\* \*\* P1
+P2 \*\* P1 \*\* \*\* \*\* \*\* \*\* \*\* P3 P1 P1 P4 P1 P2 P2 \*\* P4 \*\* \*\*
+P3 P2 \*\* P1 P3 \*\* \*\* P2 P4 \*\* \*\* P3 P2 P3 P4 P1 P2 P2 \*\* \*\*
+P2 P2 P1 P1 \*\* P2 P1 \*\* P3 \*\* P2 P3 P4 P4 \*\* \*\* P4 P4 \*\* \*\*
+P3 \*\* P3 P1 P2 P4 \*\* P4 P2 \*\* P2 P3 \*\* P2 \*\* \*\* P1 \*\* \*\* P3
+\*\* P3 P2 \*\* P4 P2 P4 \*\* P1 \*\* P1 P3 P3 P4 \*\* P3 P2 \*\* P2 P1
+\*\* \*\* P3 P4 P3 P4 P3 \*\* P4 P4 P3 P3 P1 \*\* P3 P3 P3 P1 \*\* \*\*
+P4 P3 P1 P2 P2 P1 P1 \*\* P1 P3 P4 P3 P4 P2 \*\* P3 \*\* P3 P3 P1
+P2 \*\* P3 P2 P4 P2 P3 P4 P1 P1 \*\* P2 \*\* P2 P4 P1 P3 \*\* \*\* P4
+P2 \*\* \*\* P4 \*\* P3 \*\* P4 \*\* P1 P2 P3 P4 P1 \*\* P1 P1 \*\* \*\* P2
+P1 \*\* P4 P2 P2 P1 P2 P2 P4 P4 \*\* P4 \*\* P4 P3 \*\* P4 P2 P1 \*\*
+P3 P3 P1 P1 P1 P3 \*\* P4 \*\* P2 \*\* \*\* \*\* \*\* \*\* \*\* P2 \*\* P4 \*\*
+\*\* \*\* \*\* P4 P1 P1 \*\* P3 P4 P2 \*\* \*\* P2 P4 \*\* P2 \*\* P4 P1 \*\*
+P3 P4 \*\* \*\* P2 P1 \*\* P1 P3 P1 P2 P1 P4 \*\* P4 \*\* P1 P1 P2 P4
+P4 P4 \*\* P1 P3 P2 \*\* P3 P2 P1 P1 P3 P3 \*\* P2 P4 P3 P4 \*\* \*\*
+P4 \*\* P4 P2 \*\* P4 P3 P1 P2 \*\* P1 P3 \*\* P3 \*\* P4 \*\* \*\* \*\* P2
+P4 P3 P1 P2 \*\* P2 P3 P3 P4 P1 \*\* P4 \*\* \*\* P1 \*\* \*\* P4 P3 P4
+P3 P1 P4 \*\* \*\* P2 P2 P1 P2 \*\* \*\* P2 P3 P1 \*\* \*\* P2 P1 \*\* P4
+P3 \*\* P1 P1 P3 P1 P1 P2 \*\* \*\* P4 \*\* P1 \*\* P2 P3 P3 P4 P2 \*\*
+> reset
+OK
+> quit
+# torus 18 3
+//linkssoben - rechts unten
+> place 8;10;14;9
+OK
+> place 0;17;4;7
+OK
+> place 3;14;3;6
+OK
+> place 17;16;10;15
+OK
+> place 5;8;1;3
+OK
+> place 5;7;1;15
+OK
+> place 0;5;7;3
+OK
+> place 15;2;14;11
+OK
+> place 10;17;4;15
+OK
+> place 10;14;1;17
+OK
+> place 1;16;5;11
+OK
+> place 12;10;15;12
+OK
+> place 0;10;15;4
+OK
+> place 16;15;16;4
+OK
+> place 9;0;9;11
+OK
+> place 7;14;2;7
+OK
+> place 10;5;14;3
+OK
+> place 5;4;4;12
+OK
+> place 12;4;6;10
+OK
+> place 13;16;4;1
+OK
+> place 9;4;13;3
+OK
+> place 17;10;16;17
+OK
+> place 2;5;15;10
+OK
+> place 11;2;11;10
+OK
+> place 6;3;4;2
+OK
+> place 9;14;6;16
+OK
+> place 7;1;4;3
+OK
+> place 10;7;14;10
+OK
+> place 16;5;12;11
+OK
+> place 11;12;10;3
+OK
+> place 15;16;17;1
+OK
+> place 11;15;6;11
+OK
+> place 15;6;16;8
+OK
+> place 0;15;2;13
+OK
+> place 10;12;7;9
+OK
+> place 14;1;2;0
+OK
+> place 0;9;17;15
+OK
+> place 8;15;9;10
+OK
+> place 17;12;10;0
+OK
+> place 15;7;12;2
+OK
+> place 0;12;4;16
+OK
+> place 12;17;17;5
+OK
+> place 0;6;2;6
+OK
+> place 10;16;11;0
+OK
+> place 3;2;17;2
+OK
+> place 0;0;16;1
+OK
+> place 13;15;8;17
+OK
+> place 8;5;8;6
+OK
+> place 2;4;12;7
+OK
+> place 4;6;7;4
+OK
+> place 10;1;9;5
+OK
+> place 8;3;1;6
+OK
+> place 4;8;9;8
+OK
+> place 0;4;9;9
+OK
+> place 2;9;6;5
+OK
+> place 16;9;11;5
+OK
+> place 7;10;1;14
+OK
+> place 4;5;11;9
+OK
+> place 6;15;9;7
+OK
+> place 1;0;3;3
+OK
+> place 0;1;14;8
+OK
+> place 15;0;15;1
+OK
+> place 7;0;12;5
+OK
+> place 1;8;14;16
+OK
+> place 5;17;8;13
+OK
+> place 7;6;1;11
+OK
+> place 6;8;5;1
+OK
+> place 2;14;5;6
+OK
+> place 3;10;11;1
+OK
+> place 7;7;17;11
+OK
+> place 3;11;12;1
+OK
+> place 6;12;17;8
+OK
+> place 0;2;3;13
+OK
+> rowprint 5
+\*\* P1 \*\* \*\* P3 \*\* P2 P3 P2 \*\* \*\* P2 \*\* \*\* \*\* \*\* \*\* P2
+> place 10;11;13;8
+OK
+> place 14;14;10;2
+OK
+> place 16;14;11;7
+OK
+> place 2;12;12;8
+OK
+> place 2;8;14;0
+OK
+> place 16;7;5;9
+OK
+> place 15;15;11;11
+OK
+> place 7;8;2;17
+OK
+> place 2;11;4;14
+OK
+> place 1;2;7;12
+OK
+> place 4;9;1;4
+OK
+> place 14;2;16;2
+OK
+> place 1;12;13;10
+OK
+> place 2;15;3;16
+OK
+> place 5;2;15;8
+OK
+> place 0;16;10;4
+OK
+> place 13;9;8;16
+OK
+> place 4;13;8;2
+OK
+> place 2;2;0;11
+OK
+> place 0;7;17;4
+OK
+> place 2;16;8;4
+OK
+> place 17;0;8;0
+OK
+> place 14;17;15;13
+OK
+> place 9;15;4;0
+OK
+> place 16;3;17;14
+OK
+> place 13;2;11;16
+OK
+> place 10;8;1;9
+OK
+> place 13;7;15;5
+OK
+> place 5;16;13;17
+OK
+> place 1;10;17;9
+OK
+> place 15;14;15;3
+OK
+> place 6;1;14;7
+OK
+> place 16;0;6;4
+OK
+> place 6;13;5;15
+OK
+> place 3;12;11;14
+OK
+> place 2;3;14;13
+OK
+> place 7;11;14;12
+OK
+> place 8;8;16;13
+OK
+> place 6;9;4;4
+OK
+> place 12;15;12;3
+OK
+> place 3;7;5;14
+OK
+> place 3;17;13;5
+OK
+> place 3;5;11;6
+OK
+> place 16;12;13;12
+OK
+> place 14;4;13;11
+OK
+> place 0;3;12;0
+OK
+> place 16;6;3;9
+OK
+> place 13;13;11;13
+OK
+> place 13;0;9;13
+OK
+> place 9;16;12;16
+OK
+> place 17;6;2;1
+OK
+> place 8;7;3;1
+OK
+> place 8;9;10;10
+OK
+> place 4;11;14;6
+OK
+> place 1;1;5;10
+OK
+> place 4;17;10;9
+OK
+> place 6;17;9;3
+OK
+> place 6;14;10;13
+OK
+> place 7;15;12;9
+OK
+> place 3;0;5;5
+OK
+> place 7;5;6;2
+OK
+> place 7;17;16;11
+OK
+> place 17;7;16;16
+OK
+> place 3;4;6;7
+OK
+> place 5;0;10;6
+P3 wins
+> print
+P1 P1 P1 P2 P3 P1 P1 P3 \*\* P1 P1 P2 P2 \*\* \*\* P1 P2 P2
+P3 P2 P2 P2 P3 \*\* P1 \*\* P1 P1 P1 P3 P2 \*\* P3 P3 P2 P1
+P3 P1 P2 P1 P1 P2 P1 P1 P3 P1 \*\* P1 P2 P1 P2 P3 P1 P3
+P1 P2 P3 P3 P2 P2 P3 P3 \*\* P3 P3 P2 P3 P1 P3 \*\* P3 P1
+P1 P2 P1 P3 P1 P1 P2 P2 P2 P3 \*\* P1 P3 P1 P1 P3 P2 P3
+P3 P1 P1 \*\* P3 P1 P2 P3 P2 P1 P2 P2 \*\* \*\* P3 P2 P3 P2
+\*\* P3 P2 P1 P1 P1 \*\* P2 P1 P1 P1 P2 P3 P2 P2 P2 P2 P1
+P3 P3 \*\* P1 P2 P2 P3 P1 P3 P2 P3 P2 P2 \*\* P1 P3 \*\* P3
+P2 \*\* P1 P1 P1 P3 P3 P2 P3 P3 P1 \*\* \*\* P2 \*\* P2 P3 P2
+P3 \*\* \*\* P1 P3 P3 \*\* P2 P2 P3 P2 P3 \*\* P2 P2 P1 P3 \*\*
+P3 P3 P3 P3 P2 P2 P3 P1 P1 P3 P3 P2 P2 P2 P1 P1 P2 P3
+P2 P3 P3 \*\* \*\* P2 P2 P1 \*\* P1 P3 P2 P3 P1 P3 P2 P3 \*\*
+P2 P2 P1 P2 P1 P3 \*\* P1 P2 P3 P3 P2 \*\* \*\* \*\* P2 P3 P3
+P2 \*\* P3 P3 \*\* P1 \*\* P2 P2 P3 P2 P1 P3 P1 \*\* P2 P2 P3
+P3 P3 P1 P2 P1 \*\* P1 P3 P1 P1 P1 P2 P2 P1 P3 \*\* P1 P3
+P2 P2 P2 P2 P1 P2 P3 P1 P1 \*\* P2 \*\* P3 P3 P2 P2 P1 \*\*
+P1 P1 P1 P2 P2 P2 P3 P1 P3 P2 \*\* P3 P3 P3 P1 P2 P1 P1
+P2 P1 P3 \*\* P3 P3 P1 P1 P3 P1 P1 P1 P3 \*\* P2 P1 P1 \*\*
+> reset
+OK
+//rechts oben-links unten
+> place -37;-33;99;-96
+OK
+> place -19;-103;18;61
+OK
+> place -120;99;-60;46
+OK
+> place -85;-24;77;125
+OK
+> place -3;139;36;121
+OK
+> place -154;39;-132;68
+OK
+> place 16;-6;-42;-7
+OK
+> place -34;-149;-18;21
+OK
+> place 131;-35;4;92
+OK
+> place 0;-43;-17;-87
+OK
+> place 54;18;19;-109
+OK
+> place 22;55;-124;99
+OK
+> place 94;132;36;-148
+OK
+> place -56;20;128;-16
+OK
+> place 76;22;3;-98
+OK
+> place 30;-68;68;33
+OK
+> place 81;89;-27;-93
+OK
+> place -97;-117;30;0
+OK
+> place 121;135;-126;124
+OK
+> place -95;-139;145;-67
+OK
+> place 70;-20;0;84
+OK
+> place 104;-31;48;73
+OK
+> place -142;65;-15;24
+OK
+> place 146;-57;-151;-100
+OK
+> place 8;-148;114;-42
+OK
+> place -131;-137;89;-3
+OK
+> place -13;-134;14;-34
+OK
+> place 48;-59;-63;-106
+OK
+> place 109;44;-57;-145
+OK
+> place 101;-139;73;-112
+OK
+> place -77;-55;64;101
+OK
+> place 132;-158;64;-38
+OK
+> place 135;-157;-138;119
+OK
+> place -57;134;-68;100
+OK
+> place 124;55;28;63
+OK
+> place -150;12;-146;9
+OK
+> place -98;102;-3;-128
+OK
+> place -49;105;-49;142
+OK
+> place 105;-40;-71;135
+OK
+> place 48;-92;-48;-146
+OK
+> place 123;136;115;85
+OK
+> place -25;-4;77;-9
+OK
+> place 49;-15;91;82
+OK
+> place 32;-110;-149;-90
+OK
+> place -73;-29;31;-120
+OK
+> place 4;14;6;-10
+OK
+> place -10;-93;141;40
+OK
+> place 16;83;-147;-150
+OK
+> place -98;37;112;-87
+OK
+> place 75;-11;-118;-84
+OK
+> place -56;-64;-25;-126
+OK
+> place -15;-105;108;59
+OK
+> place 61;126;115;9
+OK
+> place 141;-89;19;36
+OK
+> place -101;-28;-7;-38
+OK
+> place 123;-72;-69;-43
+OK
+> place -38;58;24;56
+OK
+> place 8;61;-41;101
+OK
+> place -35;-74;67;142
+OK
+> place 0;89;-117;-123
+OK
+> place 2;-98;-11;39
+OK
+> place -103;-14;48;-83
+OK
+> place 88;59;96;-67
+OK
+> place -30;-77;97;33
+OK
+> place 125;68;-71;-68
+OK
+> place 146;-120;-84;15
+OK
+> place 3;95;-116;87
+OK
+> place -18;-98;7;-20
+OK
+> place -68;105;86;71
+OK
+> place -135;126;-83;-73
+OK
+> place -124;5;14;60
+OK
+> place 145;69;-138;132
+OK
+> place -68;-127;57;-54
+OK
+> place 106;-36;147;-20
+OK
+> place -58;-101;69;92
+OK
+> place -19;92;116;-139
+OK
+> place -51;-145;-85;61
+OK
+> place -124;76;61;-122
+OK
+> place 21;134;40;101
+OK
+> place -79;-111;-28;-14
+OK
+> place -117;60;-19;65
+OK
+> place 118;-138;134;-79
+OK
+> place -52;-38;85;-21
+OK
+> place 149;65;4;99
+OK
+> place 71;18;-139;-49
+OK
+> place -52;-19;118;-65
+OK
+> place 66;-87;-80;46
+OK
+> place -108;-106;-32;-56
+OK
+> place 130;8;-40;44
+OK
+> place 110;140;-62;22
+OK
+> place 65;-59;87;-102
+OK
+> place 31;100;-39;-101
+OK
+> place -56;-40;148;-65
+OK
+> place 67;-68;-1;-104
+OK
+> place 122;109;49;-118
+OK
+> place 92;-6;-28;-113
+OK
+> place 104;-115;65;-47
+OK
+> place 109;-71;47;-102
+OK
+> place -147;-129;36;-89
+OK
+> place 140;-33;-61;3
+OK
+> place -129;-117;112;-139
+OK
+> place -74;-102;-112;-62
+OK
+> place 91;30;47;-151
+OK
+> place -58;18;-139;-94
+OK
+> place -66;-55;9;-128
+OK
+> place 91;114;47;-8
+OK
+> place 100;-113;131;-124
+OK
+> place -41;-161;-47;-102
+OK
+> place -17;-88;-109;-66
+OK
+> place 64;92;-103;8
+OK
+> place 151;115;-89;11
+OK
+> place 36;87;-65;113
+OK
+> place 27;-22;107;-17
+OK
+> place -114;-34;-139;-156
+OK
+> place 119;-122;75;104
+OK
+> place -2;-134;125;35
+OK
+> place 65;-160;9;-155
+OK
+> place -121;39;103;-160
+OK
+> place -102;86;-46;-108
+OK
+> place -131;-96;-81;13
+OK
+> place -13;-162;-60;131
+OK
+> place 142;-69;-84;-87
+OK
+> place -129;-97;-83;-52
+OK
+> place 44;-10;30;-100
+OK
+> place -34;-105;-133;-125
+OK
+> colprint 17
+P3 P2 P2 P2 P1 P1 P3 P1 \*\* P2 \*\* \*\* \*\* P1 P3 P2 \*\* P2
+> place -83;-80;-92;85
+OK
+> place -76;40;3;141
+OK
+> place -57;-159;98;45
+P2 wins
+> print
+P2 P3 P1 P2 \*\* P1 \*\* P2 \*\* \*\* P2 P1 P3 P2 P1 P1 P1 P3
+P3 P2 P1 P1 P2 P2 P1 \*\* P2 P3 P1 P3 P1 \*\* P3 P3 P2 P2
+\*\* \*\* P2 P2 P3 P2 P3 \*\* \*\* P3 P1 P2 P3 P2 P3 P3 P2 P2
+P1 \*\* \*\* P1 \*\* P1 P2 P2 P1 \*\* P3 P2 \*\* \*\* P1 P1 P2 P2
+\*\* P3 P3 P1 P3 P2 P1 P3 P2 P3 P1 P1 \*\* \*\* P1 P3 P1 P1
+P1 P3 P2 P1 P2 P1 P3 P2 P2 P3 P3 P3 P1 \*\* P2 P2 P2 P1
+\*\* \*\* P3 P2 P2 P3 P3 \*\* P1 P3 \*\* P3 P1 P1 P2 P3 P1 P3
+P2 \*\* P3 P1 P3 P1 P3 P3 P1 P2 P3 \*\* \*\* P2 \*\* P1 P2 P1
+P2 \*\* \*\* P3 P2 P1 P2 P1 P1 P2 \*\* P1 \*\* P3 P1 P2 \*\* \*\*
+P1 \*\* P1 P3 \*\* P3 P3 P3 \*\* \*\* \*\* \*\* P1 P3 P2 P2 P3 P2
+\*\* P1 P2 \*\* P3 \*\* P1 P2 \*\* P2 P3 P1 P1 P2 \*\* P1 P2 \*\*
+P3 P2 P3 P1 P1 P3 P2 P1 P3 P3 P1 P1 \*\* P1 P3 P2 P1 \*\*
+P3 P1 P3 P3 P1 P1 \*\* P2 P1 \*\* P3 P1 P3 P1 P3 \*\* P1 \*\*
+P2 P3 P1 P1 P1 P2 P3 P2 P2 P1 P2 P1 P3 \*\* \*\* P2 P2 P1
+P2 P2 P3 P1 P1 P1 P2 P3 P2 \*\* P3 P1 \*\* \*\* \*\* P1 P2 P3
+P2 P3 P3 P2 P2 \*\* P1 P2 P1 P2 P2 P3 P3 P2 P3 P3 P1 P2
+P2 P2 P2 P2 P3 P3 P3 \*\* P3 P3 P2 P3 P1 P3 P3 \*\* P3 \*\*
+P1 P2 P1 P1 P1 P2 P1 P3 \*\* \*\* \*\* P3 \*\* \*\* P2 P2 \*\* P2
+> reset
+OK
+//horizontal
+> place 115;-2;140;-167
+OK
+> place 121;131;-73;-58
+OK
+> place -50;79;123;12
+OK
+> place -82;-128;54;38
+OK
+> place 139;-117;112;38
+OK
+> place 51;-7;28;-60
+OK
+> place -90;15;127;-126
+OK
+> place -7;16;9;11
+OK
+> place 85;87;-10;117
+OK
+> place -149;-106;-31;-133
+OK
+> place 67;-143;-159;-88
+OK
+> place -52;6;-35;133
+OK
+> place -22;-134;-30;-68
+OK
+> place 112;-143;-147;-31
+OK
+> place 39;-157;82;-39
+OK
+> place -126;-59;-135;-55
+OK
+> place -102;126;28;-136
+OK
+> place -98;-36;-34;-29
+OK
+> place -22;-87;-73;-30
+OK
+> place -19;61;-83;25
+OK
+> place -161;47;-151;98
+OK
+> place 119;-112;131;-76
+OK
+> place 109;89;111;54
+OK
+> place -147;2;-69;-32
+OK
+> place 12;83;21;-78
+OK
+> place -138;65;-145;45
+OK
+> place -131;-166;34;-81
+OK
+> place -96;127;-10;123
+OK
+> place 102;-119;-73;-33
+OK
+> place 120;31;5;96
+OK
+> place -5;-138;-134;-134
+OK
+> place -152;110;103;66
+OK
+> place 36;78;-138;97
+OK
+> place 133;118;12;17
+OK
+> place -52;-18;-36;-169
+OK
+> place 65;111;-83;0
+OK
+> place -47;-132;-87;-101
+OK
+> place -136;-143;-66;-153
+OK
+> place -106;-69;-85;10
+OK
+> place -86;-95;98;-126
+OK
+> place 3;-127;53;-16
+OK
+> place 47;9;4;-141
+OK
+> place 60;-4;-147;-158
+OK
+> place 133;40;115;-43
+OK
+> place 63;-95;113;-49
+OK
+> place -40;131;-149;52
+OK
+> place -63;-94;7;-10
+OK
+> place -75;-154;-60;63
+OK
+> place -65;-157;-57;126
+OK
+> place -43;24;30;-164
+OK
+> place -86;-102;67;-32
+OK
+> place 72;102;22;-140
+OK
+> place -12;-55;135;57
+OK
+> place 133;45;-40;-28
+OK
+> place 24;-143;-29;105
+OK
+> place -50;35;66;60
+OK
+> place -52;-116;6;-165
+OK
+> place -127;-67;32;-128
+OK
+> place 128;29;99;116
+OK
+> place 54;-31;98;-118
+OK
+> place 0;7;-116;-43
+OK
+> place -69;-12;50;-54
+OK
+> place 68;-114;107;-162
+OK
+> place -12;-67;142;-162
+OK
+> place -161;62;-66;-106
+OK
+> place 113;36;-78;-58
+OK
+> place 52;47;82;79
+OK
+> place -63;-111;18;-53
+OK
+> place -104;62;122;-32
+OK
+> place -12;103;59;-47
+OK
+> place -82;78;12;74
+OK
+> place 51;125;68;17
+OK
+> place 122;-135;41;-123
+OK
+> place 2;-154;32;56
+OK
+> place -38;7;-155;24
+OK
+> state 7;4
+P2
+> state 93;21
+\*\*
+> state 2;3
+P3
+> place 100;114;45;38
+OK
+> place -20;-62;34;121
+OK
+> place -93;-155;98;83
+OK
+> place 23;-14;45;100
+OK
+> place -106;87;37;-106
+OK
+> place 97;13;-23;-113
+OK
+> place 83;-168;-161;57
+OK
+> place -121;-92;-16;-68
+OK
+> place 91;5;-102;6
+OK
+> place 82;-22;69;-138
+OK
+> place -145;35;-17;24
+OK
+> place -30;39;-117;-101
+OK
+> place 98;-67;-156;136
+OK
+> place 67;101;49;-100
+OK
+> place 22;65;-109;13
+OK
+> place -28;-11;-37;-115
+OK
+> place 45;113;-128;70
+OK
+> place -141;-74;-122;45
+OK
+> place 75;-87;3;-118
+OK
+> place 44;-58;-94;61
+OK
+> place -92;96;110;-78
+OK
+> place 142;110;-119;-71
+OK
+> place -18;-76;-157;30
+OK
+> place 33;-77;-73;62
+OK
+> place 37;-148;-154;118
+OK
+> place -160;125;-140;-162
+OK
+> place 115;-148;0;81
+OK
+> place 64;41;-157;55
+OK
+> place -87;121;20;38
+OK
+> place -149;-87;124;-28
+OK
+> place -111;-94;-98;-95
+OK
+> place -49;44;5;105
+OK
+> place -6;136;69;-44
+OK
+> place -36;16;95;-109
+OK
+> place -40;86;130;-49
+OK
+> place 48;18;-107;-41
+OK
+> place -148;15;-74;-87
+OK
+> place -106;106;29;89
+OK
+> place -153;63;73;-8
+OK
+> place -22;-89;-60;-141
+OK
+> place -150;113;-93;-141
+OK
+> place 75;-117;52;-121
+OK
+> place 17;84;67;133
+OK
+> place -57;-57;-70;37
+P2 wins
+> print
+\*\* P2 P1 \*\* \*\* P3 P3 P1 \*\* P3 \*\* P2 P1 P1 P2 P1 P1 \*\*
+P1 \*\* P2 P1 \*\* P3 P2 P3 P2 \*\* P3 P3 \*\* P3 P1 \*\* \*\* P2
+P2 P2 P2 P3 P2 \*\* P3 P3 P2 \*\* P3 P2 P3 \*\* \*\* P2 P2 P2
+P2 \*\* P2 P1 P3 P3 P2 P1 P1 P3 \*\* \*\* P1 P2 \*\* \*\* P3 P2
+P2 P2 P2 P3 P1 P2 P3 P3 P3 P3 \*\* P3 \*\* P1 \*\* \*\* \*\* P2
+P3 P1 \*\* P1 P1 P3 P3 P1 P2 \*\* P3 P1 P2 \*\* P1 P2 P2 P1
+P2 P1 P2 P3 P1 P1 P3 P3 \*\* P2 P1 P2 \*\* P1 P1 P3 \*\* P2
+P3 P1 \*\* \*\* P2 P1 P3 P2 P2 P3 P1 P2 P1 P3 P3 P1 P1 \*\*
+P1 P2 \*\* \*\* \*\* P1 P2 P1 P3 P3 P1 P3 \*\* \*\* P2 P1 P1 \*\*
+\*\* \*\* P1 P2 \*\* P2 \*\* P3 P2 P3 P1 P2 \*\* P3 P2 P2 \*\* P1
+P3 \*\* P2 \*\* \*\* P1 P1 P1 P2 \*\* P1 P1 P3 P1 P1 P3 \*\* \*\*
+\*\* \*\* \*\* P3 \*\* \*\* P2 \*\* P3 P3 \*\* \*\* P1 \*\* P1 \*\* P2 P2
+P3 P1 P2 P1 \*\* P2 P2 P2 \*\* P3 P3 P1 \*\* P3 P3 \*\* P2 P1
+\*\* P2 P1 P3 P3 P2 P1 P1 P2 P2 \*\* P2 P2 P3 P3 P3 P1 \*\*
+P2 P1 P2 P1 P3 P1 \*\* P2 P3 P1 P1 \*\* P3 P1 P2 P1 P1 P3
+P1 \*\* P3 P2 P1 P2 P1 P3 P3 \*\* P3 P3 P3 P3 P1 P2 \*\* P3
+P1 \*\* P1 P1 \*\* P3 P3 P3 P3 P3 P2 P1 \*\* P2 \*\* \*\* P2 \*\*
+P3 \*\* P2 P2 \*\* P1 P1 P2 P3 P2 \*\* P1 P1 P3 P2 \*\* \*\* P2
+> reset
+OK
+//vertical
+> place 73;-56;-44;-149
+OK
+> place 114;-119;-170;-88
+OK
+> place -99;122;-56;123
+OK
+> place -1;-102;-78;-1
+OK
+> place -83;-25;-165;-158
+OK
+> place 124;-13;64;-31
+OK
+> place 111;111;-76;-153
+OK
+> place 78;52;-131;69
+OK
+> place 65;-50;-5;-62
+OK
+> place 35;-124;-47;-64
+OK
+> place -41;-84;-28;-89
+OK
+> place -161;61;114;32
+OK
+> place -62;-43;37;37
+OK
+> place 80;-45;100;-159
+OK
+> place -161;-68;-169;-80
+OK
+> place 43;-147;-92;107
+OK
+> place -81;-153;-150;-5
+OK
+> place 34;70;117;-87
+OK
+> place -83;106;-45;137
+OK
+> place 103;86;52;-53
+OK
+> place -13;11;-13;112
+OK
+> place 77;55;-13;-83
+OK
+> place -50;22;117;-56
+OK
+> place 123;120;69;-34
+OK
+> place 99;-50;68;-157
+OK
+> place -58;-32;96;36
+OK
+> place -120;-85;-163;111
+OK
+> place 127;49;21;-45
+OK
+> place 94;-109;-53;-157
+OK
+> place 21;14;81;102
+OK
+> place 5;20;-140;110
+OK
+> place 94;-96;83;-148
+OK
+> place 106;60;-91;8
+OK
+> place 111;-66;6;22
+OK
+> place -50;99;-107;111
+OK
+> place -139;96;24;-66
+OK
+> place 48;-121;-119;-89
+OK
+> place 82;89;79;-94
+OK
+> place -104;-84;17;-153
+OK
+> place -39;-162;120;37
+OK
+> place 95;70;35;106
+OK
+> place 120;-65;-41;61
+OK
+> place 17;-151;95;75
+OK
+> place -45;-52;-116;-75
+OK
+> place -160;-92;18;-132
+OK
+> place 61;-96;-93;-154
+OK
+> place -154;2;-8;90
+OK
+> place -100;22;-150;-141
+OK
+> place 128;-149;42;49
+OK
+> place -103;135;-89;123
+OK
+> place 19;-151;-143;71
+OK
+> place -78;51;-15;-139
+OK
+> place -14;-13;-14;-57
+OK
+> place 35;108;23;44
+OK
+> place 123;99;26;125
+OK
+> place 9;-147;-73;-49
+OK
+> place -27;80;60;138
+OK
+> place -137;82;-12;100
+OK
+> place 56;-155;-23;-131
+OK
+> place 134;-137;17;-50
+OK
+> place -104;-113;-151;25
+OK
+> place 17;-42;-62;120
+OK
+> place -75;88;52;-160
+OK
+> place 135;132;-165;-103
+OK
+> place 36;-19;-61;41
+OK
+> place -10;41;-10;-5
+OK
+> place -2;-96;20;-25
+OK
+> place -87;20;20;-148
+OK
+> place 37;44;65;-138
+OK
+> place -123;88;-58;-95
+OK
+> place -167;41;-83;36
+OK
+> place 35;-47;54;-148
+OK
+> place -50;-162;58;-128
+OK
+> place -141;-133;-54;-146
+OK
+> place 37;117;-92;-10
+OK
+> place -5;-19;-165;109
+OK
+> place 2;136;72;47
+OK
+> place 60;116;21;48
+OK
+> place -76;-22;-112;138
+OK
+> place -93;86;-126;-131
+OK
+> place -33;108;44;30
+OK
+> place 85;-69;25;43
+OK
+> place -31;36;133;4
+OK
+> place 128;-147;-124;-82
+OK
+> place -154;-141;-130;56
+OK
+> place 54;99;-121;-116
+OK
+> place 120;-115;29;126
+OK
+> place 29;-42;-135;-101
+OK
+> place 21;125;27;31
+OK
+> place 21;-77;57;-11
+OK
+> place -72;59;-57;39
+OK
+> place -104;-46;121;-71
+OK
+> place 2;-88;-109;-62
+OK
+> place -10;10;98;-146
+OK
+> place -75;-156;-9;-108
+OK
+> place 90;-82;-40;133
+OK
+> place -148;69;2;-49
+OK
+> place -169;111;28;-8
+OK
+> place 35;104;95;41
+OK
+> place 82;124;-58;-115
+OK
+> place -134;-148;-7;-160
+OK
+> place -150;84;102;-108
+OK
+> place 87;-147;-61;1
+OK
+> place -162;-50;-78;-135
+OK
+> place 116;14;-92;9
+OK
+> place -72;93;-1;37
+OK
+> place -138;-15;-3;-41
+OK
+> place -51;-53;57;105
+OK
+> place 47;-9;-28;26
+OK
+> place -62;115;-150;136
+OK
+> place -52;30;-161;96
+OK
+> place 125;-23;72;-89
+OK
+> place 32;-56;62;114
+OK
+> place -83;-33;-160;-72
+OK
+> place -36;15;-71;-152
+OK
+> place -112;-48;-3;-79
+OK
+> place 15;-119;32;-17
+OK
+> place -109;-73;92;-117
+OK
+> place -87;4;22;-152
+OK
+> place -159;-10;-30;-9
+P3 wins
+> print
+\*\* P1 \*\* P1 P2 P1 \*\* \*\* P3 P2 \*\* P2 P3 P2 P3 P1 P2 P2
+\*\* P1 \*\* P2 P3 P2 P3 P3 P3 P3 P1 P3 \*\* P1 \*\* P2 P1 P3
+P3 \*\* P3 \*\* \*\* P1 \*\* P2 P3 P1 P2 P1 P3 P1 P2 P3 P3 \*\*
+P3 P3 P2 P1 P2 P1 P1 P3 P3 P1 \*\* P2 P3 P3 P3 P3 P1 P2
+P1 \*\* P1 \*\* P2 P2 P3 \*\* P2 P2 P2 \*\* P2 P1 \*\* P2 P1 P2
+P2 P1 P1 P1 P3 P3 P3 P1 P3 P2 P2 P3 \*\* \*\* \*\* \*\* P2 \*\*
+P2 \*\* \*\* P2 P1 P3 P3 P2 P3 P3 P1 \*\* P3 P1 P3 \*\* P2 \*\*
+P2 P1 \*\* P3 P2 \*\* \*\* P1 P1 \*\* P1 P2 P1 \*\* P2 P1 P1 \*\*
+\*\* P2 P2 P1 P3 P3 P2 P3 P1 P2 P1 \*\* P3 P3 P3 \*\* P1 P1
+P2 \*\* P2 P3 P1 \*\* P1 P1 P3 P2 \*\* P1 P3 P2 P3 P2 P2 \*\*
+P2 \*\* P2 P2 \*\* P3 \*\* P2 \*\* \*\* P2 P1 P2 P1 P2 P2 P1 P2
+P3 P1 P2 P2 P3 P2 P3 P1 \*\* P1 P3 \*\* P1 \*\* P2 \*\* \*\* \*\*
+P3 P1 \*\* P3 \*\* P1 \*\* P3 \*\* P2 P2 P3 P3 P2 \*\* P1 \*\* P1
+\*\* P2 \*\* P1 \*\* P2 P2 P3 \*\* \*\* P3 \*\* \*\* P2 P2 P2 \*\* P1
+\*\* P3 P1 \*\* P2 P1 P2 P3 \*\* P1 \*\* P1 P1 P1 P1 P1 P2 \*\*
+P1 P1 P3 P1 P2 P1 P2 P3 P1 P1 \*\* P2 P3 P2 P2 P1 P3 \*\*
+\*\* P2 P3 \*\* \*\* P3 P3 \*\* P3 P3 \*\* \*\* P1 \*\* \*\* P3 P3 P1
+P3 P1 P1 P3 P3 P2 P1 P3 P3 P3 P3 P1 P2 P1 P3 \*\* P2 P1
+> state 42;9001
+\*\*
+> quit
+$ Torus-winning-tests (over edges) finished
+
+//winning on a stadard
+# standard 20 4
+//links oben-rechts unten
+> place 10;19;3;1
+OK
+> place 10;3;19;19
+OK
+> place 15;10;16;6
+OK
+> place 19;12;7;9
+OK
+> place 16;7;16;5
+OK
+> place 14;3;6;3
+OK
+> place 0;4;17;5
+OK
+> place 2;5;13;10
+OK
+> place 14;14;19;9
+OK
+> place 7;4;19;3
+OK
+> place 8;6;4;2
+OK
+> place 1;12;10;5
+OK
+> place 15;18;15;19
+OK
+> place 9;13;1;17
+OK
+> place 0;14;0;16
+OK
+> place 18;12;0;5
+OK
+> place 7;3;10;0
+OK
+> place 16;18;4;17
+OK
+> place 2;0;11;8
+OK
+> place 0;12;6;12
+OK
+> place 4;16;15;2
+OK
+> place 4;0;8;17
+OK
+> place 14;10;7;1
+OK
+> place 14;18;12;6
+OK
+> place 19;8;0;0
+OK
+> place 1;18;1;4
+OK
+> place 13;16;4;8
+OK
+> place 10;7;3;0
+OK
+> place 11;3;11;12
+OK
+> place 18;8;3;14
+OK
+> place 3;5;12;0
+OK
+> place 0;3;16;12
+OK
+> place 7;15;4;13
+OK
+> place 1;11;13;1
+OK
+> place 7;13;11;14
+OK
+> place 11;6;6;19
+OK
+> place 12;12;19;0
+OK
+> place 14;13;2;7
+OK
+> place 19;2;18;10
+OK
+> place 17;11;8;0
+OK
+> place 2;19;19;16
+OK
+> place 9;5;17;12
+OK
+> place 16;14;4;4
+OK
+> place 11;19;3;16
+OK
+> place 4;15;0;15
+OK
+> place 12;10;15;11
+OK
+> place 9;2;0;19
+OK
+> place 16;15;17;17
+OK
+> place 12;16;17;9
+OK
+> place 14;15;3;13
+OK
+> place 5;19;17;3
+OK
+> place 15;8;19;4
+OK
+> place 14;11;9;11
+OK
+> place 5;8;13;18
+OK
+> place 18;11;2;11
+OK
+> place 15;13;8;9
+OK
+> place 12;1;18;6
+OK
+> place 12;15;10;17
+OK
+> place 14;16;9;3
+OK
+> place 1;19;9;7
+OK
+> place 18;19;13;19
+OK
+> place 14;6;13;0
+OK
+> place 18;4;13;11
+OK
+> place 3;17;13;8
+OK
+> place 8;16;12;4
+OK
+> place 9;0;17;19
+OK
+> place 3;11;16;1
+OK
+> place 12;9;13;7
+OK
+> place 12;2;10;9
+OK
+> place 9;1;2;1
+OK
+> place 2;6;15;17
+OK
+> place 8;5;17;16
+OK
+> place 15;3;2;15
+OK
+> place 2;17;7;12
+OK
+> place 14;19;1;13
+OK
+> place 17;4;8;7
+OK
+> place 18;9;16;8
+OK
+> place 7;16;6;1
+OK
+> place 19;6;1;5
+OK
+> place 13;5;7;5
+OK
+> place 7;0;13;14
+OK
+> place 13;4;10;15
+OK
+> place 6;6;1;8
+OK
+> place 18;0;5;12
+OK
+> place 8;14;18;16
+OK
+> place 17;2;18;15
+OK
+> place 5;2;9;8
+OK
+> place 1;1;19;17
+OK
+> place 15;4;13;9
+OK
+> place 16;16;10;1
+OK
+> place 16;9;7;19
+OK
+> place 10;14;3;9
+OK
+> place 9;15;15;16
+OK
+> place 0;9;3;8
+OK
+> place 19;5;18;17
+OK
+> place 9;4;5;9
+OK
+> place 8;13;12;18
+OK
+> place 5;16;3;18
+OK
+> place 12;13;9;10
+OK
+> place 15;5;11;17
+OK
+> place 11;11;7;14
+OK
+> place 12;19;18;1
+OK
+> place 7;18;14;9
+OK
+> place 6;4;13;17
+OK
+> place 8;2;7;11
+OK
+> place 11;15;14;8
+OK
+> place 2;10;11;13
+OK
+> place 4;5;16;0
+OK
+> place 17;7;8;1
+OK
+> place 17;1;16;2
+OK
+> place 13;15;2;12
+OK
+> place 4;10;8;18
+OK
+> place 19;15;6;16
+OK
+> place 18;13;16;19
+OK
+> place 14;12;19;10
+OK
+> place 15;0;6;15
+OK
+> place 17;14;14;0
+OK
+> place 11;16;1;10
+OK
+> place 18;18;4;7
+OK
+> place 15;12;17;15
+OK
+> place 2;16;1;6
+OK
+> place 9;6;17;13
+OK
+> place 16;11;6;9
+OK
+> place 12;17;6;0
+OK
+> place 5;13;6;17
+OK
+> place 3;19;8;4
+OK
+> place 10;8;13;12
+OK
+> place 1;2;8;19
+OK
+> place 15;7;2;14
+OK
+> place 0;1;6;14
+OK
+> place 7;10;15;9
+OK
+> place 8;3;18;5
+OK
+> place 18;2;8;12
+OK
+> place 12;8;18;3
+OK
+> place 5;7;13;13
+OK
+> place 4;19;10;11
+OK
+> place 3;2;1;14
+OK
+> place 5;1;10;2
+OK
+> place 6;2;3;3
+OK
+> place 3;12;1;15
+OK
+> place 2;3;6;18
+OK
+> place 19;14;4;6
+OK
+> place 4;11;3;7
+OK
+> place 6;5;10;6
+OK
+> place 5;6;9;18
+OK
+> place 13;3;17;18
+OK
+> place 7;7;10;10
+OK
+> place 6;8;6;11
+OK
+> place 14;1;14;5
+OK
+> place 0;6;0;13
+OK
+> place 10;13;6;10
+OK
+> place 1;3;12;3
+OK
+> place 2;9;9;9
+OK
+> place 10;16;5;11
+OK
+> place 10;12;17;8
+OK
+> place 5;17;11;18
+OK
+> place 16;4;11;1
+OK
+> place 5;15;8;8
+OK
+> place 5;5;9;12
+OK
+> place 12;7;16;17
+P4 wins
+> print
+P1 P2 \*\* P4 P3 P4 P2 \*\* \*\* P2 \*\* \*\* P4 P2 P3 P1 P3 \*\* \*\* P3
+\*\* P4 P4 P4 P2 P3 P1 \*\* P3 \*\* P2 P2 P4 P3 P1 P4 \*\* P2 P2 P4
+P3 P2 \*\* P1 \*\* P4 P3 P2 \*\* P1 P3 P3 P3 \*\* P1 P1 P1 P2 \*\* P1
+P4 P1 P1 P3 \*\* P3 \*\* P3 P2 P4 \*\* P3 P4 P2 P2 \*\* P4 P4 P2 P2
+P2 \*\* P3 \*\* P3 P4 P2 P3 P3 \*\* P4 P3 \*\* P1 \*\* P1 P1 P2 \*\* P4
+\*\* P2 P3 \*\* \*\* P3 P1 P3 P2 P4 \*\* P2 P4 P1 \*\* P2 P2 P4 \*\* P3
+P4 P2 P3 P2 P4 P4 P3 \*\* P4 P3 P3 P4 P4 \*\* P2 P4 P1 P1 P1 P4
+P1 P3 \*\* P1 P2 P4 \*\* P3 \*\* P4 P3 P1 P2 P3 P1 P1 P2 \*\* P3 P3
+P4 P1 P1 P4 P2 P4 P3 P4 P2 P4 \*\* \*\* P1 P1 P1 \*\* P1 P2 P4 P4
+P2 P2 P3 P3 P4 P2 P2 P4 P3 P1 P3 P1 P3 P2 \*\* P1 \*\* \*\* P1 \*\*
+P1 P2 P2 P2 \*\* P4 P4 P4 P3 P1 P3 P4 P3 P3 P4 P2 P2 P2 \*\* P1
+\*\* P1 \*\* P1 \*\* \*\* P4 \*\* P3 \*\* \*\* P1 P1 P3 P3 P2 P2 P4 P4 P4
+P3 P1 P1 P4 P1 \*\* P4 P4 P2 P4 P2 \*\* P1 P3 \*\* P2 P1 P4 P1 P2
+P2 P2 \*\* P2 P2 P4 \*\* P4 P4 P1 P4 P3 P3 P3 P1 P3 P3 P4 P2 P1
+P1 P1 \*\* P2 \*\* P1 P2 \*\* P2 P3 P3 P1 P3 P2 P1 P2 P3 \*\* P4 P3
+P4 \*\* P1 P1 P1 P4 \*\* P1 P4 P3 P3 P2 P4 P4 \*\* \*\* P1 P3 P1 P1
+P4 P3 P2 \*\* P1 P1 P3 P1 P1 P3 \*\* P3 P4 \*\* P3 P4 P2 P4 P2 P2
+\*\* P2 P2 P3 P4 P3 \*\* P1 P3 P1 \*\* P4 P2 P2 P1 P4 P4 P4 P2 P2
+P4 P2 P1 P2 P3 P4 P1 \*\* P2 P1 P3 P3 P4 P2 \*\* P2 P1 P3 P3 P1
+P1 \*\* P3 P2 P4 P3 P3 \*\* P1 P1 P3 \*\* P4 \*\* P2 P1 P1 P4 \*\* P2
+> reset
+OK
+// vertical
+> place 18;15;4;4
+OK
+> place 5;8;9;5
+OK
+> place 4;12;1;2
+OK
+> place 4;5;13;6
+OK
+> place 15;12;19;13
+OK
+> place 16;1;11;12
+OK
+> place 1;16;17;6
+OK
+> place 6;12;4;10
+OK
+> place 7;0;9;10
+OK
+> place 11;3;5;18
+OK
+> place 10;19;4;8
+OK
+> place 13;11;4;16
+OK
+> place 10;6;16;17
+OK
+> place 1;13;0;4
+OK
+> place 6;2;15;17
+OK
+> place 13;0;3;14
+OK
+> place 9;7;0;8
+OK
+> place 7;12;18;0
+OK
+> place 15;18;14;16
+OK
+> place 6;9;14;9
+OK
+> place 13;9;14;1
+OK
+> place 12;11;17;13
+OK
+> place 12;17;8;5
+OK
+> place 18;3;16;19
+OK
+> place 9;13;11;16
+OK
+> place 19;5;14;3
+OK
+> place 17;11;5;5
+OK
+> place 0;14;3;3
+OK
+> place 10;0;7;9
+OK
+> place 19;1;2;4
+OK
+> place 2;1;2;12
+OK
+> place 0;5;3;5
+OK
+> place 6;18;10;11
+OK
+> place 16;16;14;2
+OK
+> place 18;11;17;5
+OK
+> place 5;10;16;7
+OK
+> place 3;2;1;17
+OK
+> place 5;9;6;15
+OK
+> place 16;11;2;19
+OK
+> place 17;19;19;19
+OK
+> place 3;0;19;18
+OK
+> place 0;6;15;4
+OK
+> place 11;17;15;8
+OK
+> place 3;19;2;17
+OK
+> place 19;8;8;16
+OK
+> place 17;4;6;11
+OK
+> place 14;13;2;8
+OK
+> place 8;13;17;17
+OK
+> place 0;12;10;17
+OK
+> place 8;1;16;12
+OK
+> place 8;6;8;10
+OK
+> place 17;9;5;2
+OK
+> place 17;18;10;3
+OK
+> place 9;19;16;5
+OK
+> place 11;9;6;0
+OK
+> place 2;15;8;12
+OK
+> place 11;7;3;10
+OK
+> place 7;5;8;15
+OK
+> place 3;11;14;18
+OK
+> place 14;5;5;12
+OK
+> place 10;12;10;5
+OK
+> place 16;2;16;13
+OK
+> place 18;1;13;10
+OK
+> place 11;18;4;14
+OK
+> place 5;1;10;7
+OK
+> place 12;4;8;0
+OK
+> place 5;17;10;10
+OK
+> place 6;5;19;12
+OK
+> place 5;19;11;13
+OK
+> place 13;5;19;10
+OK
+> place 9;17;2;10
+OK
+> place 12;2;3;6
+OK
+> place 6;1;17;12
+OK
+> place 7;6;5;3
+OK
+> place 9;15;5;4
+OK
+> place 5;6;13;1
+OK
+> place 18;18;8;4
+OK
+> place 2;9;11;2
+OK
+> place 12;8;6;13
+OK
+> place 8;2;10;16
+OK
+> place 5;14;5;11
+OK
+> place 0;17;9;18
+OK
+> place 3;16;3;18
+OK
+> place 10;1;2;0
+OK
+> place 9;0;18;2
+OK
+> place 18;4;6;8
+OK
+> place 17;8;5;0
+OK
+> place 14;7;7;13
+OK
+> place 12;18;10;8
+OK
+> place 13;18;6;10
+OK
+> place 14;8;15;13
+OK
+> place 15;15;7;17
+OK
+> place 19;14;7;8
+OK
+> place 4;11;19;2
+OK
+> place 15;6;4;18
+OK
+> place 7;10;8;7
+OK
+> place 7;3;6;4
+OK
+> place 8;17;10;15
+OK
+> place 4;19;19;7
+OK
+> place 0;13;4;6
+OK
+> place 13;7;11;0
+OK
+> place 10;14;18;10
+OK
+> place 14;15;0;1
+OK
+> place 9;9;11;19
+OK
+> place 15;1;15;0
+OK
+> place 12;3;3;17
+OK
+> place 10;9;7;7
+OK
+> place 13;4;15;14
+OK
+> place 4;3;12;5
+OK
+> place 6;7;14;11
+OK
+> place 18;16;8;8
+OK
+> place 13;13;11;5
+OK
+> place 2;2;19;4
+OK
+> place 9;16;0;15
+OK
+> place 4;13;12;19
+OK
+> place 6;14;3;9
+OK
+> place 3;8;13;2
+OK
+> place 3;4;12;14
+OK
+> place 12;16;15;9
+OK
+> place 1;6;14;19
+OK
+> place 10;18;6;6
+OK
+> place 3;1;6;17
+OK
+> place 11;8;17;16
+OK
+> place 14;12;17;2
+OK
+> place 4;1;15;16
+OK
+> place 0;0;4;7
+OK
+> place 19;15;1;18
+OK
+> place 9;4;5;16
+OK
+> place 19;9;19;16
+OK
+> place 4;2;2;18
+OK
+> place 11;14;8;19
+OK
+> place 15;11;19;17
+OK
+> place 0;2;6;3
+OK
+> place 16;14;18;12
+OK
+> place 3;13;1;11
+OK
+> place 13;16;3;15
+OK
+> place 2;5;11;11
+OK
+> place 6;19;1;8
+OK
+> place 17;3;4;17
+OK
+> place 16;9;7;1
+OK
+> place 12;13;9;12
+OK
+> place 13;3;7;19
+OK
+> place 5;15;9;2
+OK
+> place 4;9;8;9
+OK
+> place 1;9;7;16
+OK
+> place 5;13;13;15
+OK
+> place 2;16;16;8
+OK
+> place 17;7;16;10
+OK
+> place 2;11;7;2
+OK
+> place 0;16;13;8
+OK
+> place 7;15;0;19
+OK
+> place 4;0;15;7
+OK
+> place 1;10;8;3
+OK
+> place 14;17;11;1
+OK
+> place 10;4;18;13
+OK
+> place 7;4;7;11
+OK
+> place 19;11;1;19
+OK
+> place 1;0;12;1
+OK
+> place 15;5;11;10
+OK
+> place 14;6;12;12
+OK
+> place 15;2;12;0
+OK
+> place 11;6;14;0
+OK
+> place 13;12;16;15
+OK
+> place 17;15;15;19
+OK
+> place 12;10;5;7
+OK
+> place 12;7;12;6
+OK
+> place 1;14;1;12
+OK
+> place 8;14;0;10
+OK
+> place 13;19;1;5
+OK
+> place 14;14;14;4
+OK
+> place 9;3;9;8
+OK
+> place 12;9;1;1
+OK
+> place 1;15;2;13
+OK
+> place 18;19;8;18
+OK
+> place 0;18;0;3
+OK
+> place 18;5;16;6
+OK
+> place 17;0;18;14
+OK
+> place 9;11;1;7
+OK
+> place 10;13;18;8
+OK
+> place 15;10;0;9
+OK
+> place 11;4;19;6
+OK
+> place 0;7;16;3
+OK
+> place 2;6;16;4
+OK
+> place 18;7;13;17
+OK
+> place 9;6;17;1
+OK
+> place 16;18;2;14
+OK
+> place 18;17;9;1
+OK
+> place 4;15;13;14
+OK
+> place 7;14;16;0
+OK
+> place 15;3;18;6
+P2 wins
+> print
+P2 P3 P1 P3 P2 P4 P2 P2 P1 P4 P4 \*\* P1 P4 P4 P2 P2 P2 P3 P3
+P2 P4 P3 \*\* \*\* P1 P4 P2 P2 P1 P1 P3 P3 P2 P3 P1 P3 P1 P3 P1
+P4 P3 P1 \*\* P2 P1 P3 \*\* P3 P2 P3 P1 P3 P1 P2 P4 P3 P4 P2 P3
+P1 P2 P1 P4 P2 P4 P4 \*\* P1 P4 P1 P3 \*\* P3 P4 P4 P3 P2 P3 P4
+P4 P1 P2 P1 P1 P4 P4 P2 P3 P4 P4 P2 P3 P3 P4 P4 P4 P3 P3 P3
+P3 P1 P4 P2 P3 P3 P4 P1 P2 P2 P4 P1 P4 P2 P1 P3 P4 P3 P2 P1
+P3 P1 P3 P1 P1 P4 P1 P2 P2 P4 P2 P2 P4 P3 P4 P2 \*\* P2 P1 P2
+P1 P4 P1 P1 P4 P2 P2 P3 P1 P1 P4 P4 P2 P4 P1 P3 P1 P4 \*\* P2
+P2 P2 P4 P1 P1 P3 P3 P4 P3 P4 P3 \*\* P4 P4 P4 P2 P1 P2 P2 P3
+P1 P3 P3 P3 P4 P2 P1 P1 P3 P4 P1 P2 P1 P1 \*\* P3 P2 P3 P2 P2
+P1 P4 \*\* P1 P3 P1 P1 P1 P1 P3 P3 P1 P1 P3 P2 P2 P4 P1 P1 P3
+P1 P2 P2 P2 P1 P4 P2 P1 P3 P3 P3 P1 P2 P1 P3 \*\* P1 P3 P4 P4
+P1 P2 P4 P2 P2 P1 P2 P2 P3 P4 P1 P2 P4 P1 P2 \*\* P3 P3 P1 P3
+P4 P4 P1 P2 P4 P2 P4 P1 P2 P1 P3 P4 P3 P4 P4 P2 P4 P4 P2 P1
+P2 P1 P2 P2 P2 P4 P4 P4 P3 P4 \*\* P2 P4 P3 P2 P3 P3 P2 P3 P4
+P1 P1 P1 P2 P2 P3 P3 P4 P3 P3 P4 P4 P1 P3 P4 P4 P1 P3 P3 P4
+P1 P2 P2 P2 P3 P2 P4 P4 P3 P4 P4 P3 P2 P2 P2 P3 P2 P1 P2 P4
+P1 P1 P4 P3 P2 P3 P3 P4 P3 P4 \*\* P3 P1 P2 \*\* P4 P3 P4 P1 P4
+P2 P3 P1 P4 P2 P4 P2 P4 P3 \*\* P2 P3 P2 P3 P1 P1 P3 P3 P1 P2
+\*\* P2 P2 \*\* P1 P2 P1 P3 P1 P1 P2 P1 P4 P1 P1 P3 P1 P4 P1 P4
+> quit
+//
+# standard 18 2
+//links unten - rechts oben
+> place 3;12;11;16
+OK
+> place 13;13;15;5
+OK
+> place 8;9;14;1
+OK
+> place 3;4;6;6
+OK
+> place 11;1;5;5
+OK
+> place 17;8;16;2
+OK
+> place 16;12;0;7
+OK
+> place 0;15;5;0
+OK
+> place 9;5;5;16
+OK
+> place 7;2;3;14
+OK
+> place 1;0;16;13
+OK
+> place 4;4;15;15
+OK
+> place 15;11;10;16
+OK
+> place 12;3;2;9
+OK
+> place 16;9;13;11
+OK
+> place 6;7;10;8
+OK
+> place 11;2;5;13
+OK
+> place 13;16;12;1
+OK
+> place 3;6;11;3
+OK
+> place 3;1;7;11
+OK
+> place 7;15;11;17
+OK
+> place 13;7;9;14
+OK
+> place 10;11;9;3
+OK
+> place 9;15;1;14
+OK
+> place 14;6;7;1
+OK
+> place 11;15;13;8
+OK
+> place 12;5;8;8
+OK
+> place 15;7;0;14
+OK
+> place 10;7;17;11
+OK
+> place 16;17;10;13
+OK
+> place 7;6;14;9
+OK
+> place 10;10;9;2
+OK
+> place 1;15;1;11
+OK
+> place 5;2;15;4
+OK
+> place 13;12;4;17
+OK
+> place 15;14;9;11
+OK
+> place 11;4;2;4
+OK
+> place 17;0;16;14
+OK
+> place 17;2;8;12
+OK
+> place 6;16;10;15
+OK
+> place 9;7;17;6
+OK
+> place 6;12;11;7
+OK
+> place 1;3;11;10
+OK
+> place 6;4;9;8
+OK
+> place 8;17;9;6
+OK
+> place 7;10;7;13
+OK
+> place 5;9;4;0
+OK
+> place 0;6;7;12
+OK
+> place 7;7;7;9
+OK
+> place 6;11;14;2
+OK
+> place 2;3;2;16
+OK
+> place 6;17;5;7
+OK
+> place 2;6;5;17
+OK
+> place 3;17;1;5
+OK
+> place 12;6;4;2
+OK
+> place 13;5;3;0
+OK
+> place 15;8;2;0
+OK
+> place 14;12;14;13
+OK
+> place 4;15;11;0
+OK
+> place 1;6;17;1
+OK
+> place 14;11;5;10
+OK
+> place 4;9;6;13
+OK
+> place 8;2;7;0
+OK
+> place 8;13;16;11
+OK
+> place 11;13;4;11
+OK
+> place 0;8;9;16
+OK
+> place 14;5;10;9
+OK
+> place 10;1;4;16
+OK
+> place 13;1;4;8
+OK
+> place 6;8;10;12
+OK
+> place 5;12;17;10
+OK
+> place 15;1;12;16
+OK
+> place 3;16;13;4
+OK
+> place 6;10;3;9
+OK
+> place 1;17;4;3
+OK
+> place 5;4;2;12
+OK
+> place 3;15;10;4
+OK
+> place 12;12;12;4
+OK
+> place 1;7;2;2
+OK
+> place 7;14;16;7
+OK
+> place 12;11;13;15
+OK
+> place 12;13;4;7
+OK
+> place 15;13;2;5
+OK
+> place 4;5;13;10
+OK
+> place 3;3;8;0
+OK
+> place 8;15;12;9
+OK
+> place 1;2;6;15
+OK
+> place 17;16;3;5
+OK
+> place 10;5;8;11
+OK
+> place 16;0;16;3
+OK
+> place 0;16;16;5
+OK
+> place 11;5;9;17
+OK
+> place 13;14;12;17
+OK
+> place 5;3;1;8
+OK
+> place 9;1;17;3
+OK
+> place 2;10;4;1
+OK
+> place 8;4;12;14
+OK
+> place 0;11;0;17
+OK
+> place 15;2;9;0
+OK
+> place 17;12;2;7
+OK
+> place 10;3;0;12
+OK
+> place 17;4;0;10
+OK
+> place 8;3;9;10
+OK
+> place 15;10;1;10
+OK
+> place 1;1;13;17
+OK
+> place 10;0;7;5
+OK
+> place 14;17;2;8
+OK
+> place 17;17;8;1
+OK
+> place 0;9;17;5
+OK
+> place 13;6;11;14
+OK
+> place 15;16;17;14
+OK
+> place 17;7;3;2
+OK
+> place 10;6;6;14
+OK
+> place 7;4;4;13
+OK
+> place 7;8;4;6
+OK
+> place 14;0;5;14
+OK
+> place 3;8;8;6
+OK
+> place 14;15;17;13
+OK
+> place 9;13;15;0
+OK
+> place 4;12;5;1
+OK
+> place 10;17;0;13
+OK
+> place 8;10;1;16
+OK
+> place 12;10;6;5
+OK
+> place 14;7;7;3
+OK
+> place 8;7;5;15
+OK
+> place 9;9;13;3
+P2 wins
+> print
+\*\* \*\* \*\* \*\* \*\* \*\* P2 P1 P2 P1 P2 P2 P1 P1 P2 P2 P1 P2
+P1 P1 P1 P1 \*\* P2 P2 P1 P2 \*\* P2 P1 \*\* \*\* P2 P1 P2 P1
+P1 \*\* P1 P1 P1 P1 P1 P2 P1 P2 P2 \*\* P2 \*\* \*\* \*\* P1 \*\*
+P2 P2 P2 P1 P2 P2 P1 \*\* P1 P2 \*\* \*\* P1 \*\* P2 P1 P1 P2
+P1 P2 P1 P1 P2 P2 P1 P2 P1 P2 \*\* P1 P2 P2 \*\* P1 P2 P1
+P2 P2 P2 P2 P2 P1 \*\* P2 \*\* P1 P1 \*\* P1 P1 P2 P1 P1 P1
+\*\* \*\* \*\* \*\* P2 P1 P2 P2 P2 \*\* P2 P2 P2 P2 P1 P1 P2 P2
+P1 P1 P2 P2 P2 P2 P1 P1 P1 P1 P2 P2 P2 P2 P2 P1 \*\* \*\*
+P1 P2 P1 P1 P1 \*\* P1 P1 P1 P1 P2 P1 P1 P2 \*\* P2 \*\* P1
+P1 P1 P2 P1 \*\* P1 P1 P1 P2 P2 P1 P2 \*\* P1 P2 P2 P2 P2
+P2 P2 \*\* P1 P1 P1 P1 P1 P2 P1 P2 P1 P2 P2 \*\* P2 P1 P1
+P1 P1 P1 P1 P1 P2 \*\* P2 \*\* \*\* P1 \*\* \*\* P1 P2 P2 P1 P1
+\*\* P2 \*\* P2 P2 P1 P1 \*\* \*\* P2 P1 P1 P2 P2 P1 \*\* P2 P1
+\*\* P1 \*\* P2 P1 P2 P2 P2 P2 \*\* P2 P1 P1 P2 P1 P1 P2 P1
+P2 P1 P2 \*\* \*\* P1 P1 P2 \*\* P1 \*\* P1 P2 P2 \*\* P2 \*\* P1
+P1 P2 P1 \*\* P2 P2 \*\* P2 P1 \*\* P2 P1 \*\* P1 P2 P2 P1 \*\*
+P2 \*\* P2 P2 \*\* P1 \*\* P2 \*\* P1 \*\* P2 P1 P1 P2 \*\* \*\* P2
+P2 P2 P1 P1 P2 P1 P1 P2 P2 \*\* P1 P1 P2 P2 P1 \*\* P2 P2
+> reset
+OK
+//horizontal
+> place 13;12;3;11
+OK
+> place 13;16;4;1
+OK
+> place 7;15;14;17
+OK
+> place 12;9;1;12
+OK
+> place 6;11;16;8
+OK
+> place 2;0;5;1
+OK
+> place 7;9;8;3
+OK
+> place 15;5;16;17
+OK
+> place 15;11;4;9
+OK
+> place 3;3;7;2
+OK
+> place 13;10;0;9
+OK
+> place 12;8;3;17
+OK
+> place 0;10;16;15
+OK
+> place 11;3;13;4
+OK
+> place 15;15;13;0
+OK
+> place 8;7;17;8
+OK
+> place 0;2;2;11
+OK
+> place 1;15;2;3
+OK
+> place 1;11;11;14
+OK
+> place 11;13;1;2
+OK
+> place 0;7;6;17
+OK
+> place 4;4;4;14
+OK
+> place 4;15;16;3
+OK
+> place 5;13;9;13
+OK
+> place 0;17;15;14
+OK
+> place 15;17;0;0
+OK
+> place 12;4;12;10
+OK
+> place 8;17;16;0
+OK
+> place 13;5;13;17
+OK
+> place 5;9;17;10
+OK
+> place 9;3;1;6
+OK
+> place 7;7;8;12
+OK
+> place 11;0;7;3
+OK
+> place 3;5;3;1
+OK
+> place 11;10;0;11
+OK
+> place 2;15;12;1
+OK
+> place 15;16;11;6
+OK
+> place 14;1;12;7
+OK
+> place 8;9;16;13
+OK
+> place 5;15;5;17
+OK
+> place 0;16;12;3
+OK
+> place 9;12;13;1
+OK
+> place 13;14;7;16
+OK
+> place 16;5;17;9
+OK
+> place 8;11;6;8
+OK
+> place 15;6;4;11
+OK
+> place 17;4;16;12
+OK
+> place 6;10;17;13
+OK
+> place 1;17;6;6
+OK
+> place 17;11;14;8
+OK
+> place 2;8;2;13
+OK
+> place 11;16;17;6
+OK
+> place 7;0;5;0
+OK
+> place 10;17;9;2
+OK
+> place 16;2;15;0
+OK
+> place 15;1;10;14
+OK
+> place 17;12;16;9
+OK
+> place 1;13;6;13
+OK
+> place 15;7;3;0
+OK
+> place 6;7;8;4
+OK
+> place 17;16;7;1
+OK
+> place 9;0;2;7
+OK
+> place 1;9;0;15
+OK
+> place 16;6;11;7
+OK
+> place 6;15;2;10
+OK
+> place 1;4;2;14
+OK
+> place 13;9;12;15
+OK
+> place 4;13;11;2
+OK
+> place 5;3;15;2
+OK
+> place 9;15;9;9
+OK
+> place 6;2;10;5
+OK
+> place 8;15;14;0
+OK
+> place 17;5;7;13
+OK
+> place 16;14;12;12
+OK
+> place 10;9;14;10
+OK
+> place 6;4;17;0
+OK
+> place 14;4;0;13
+OK
+> place 4;0;3;13
+OK
+> place 1;16;16;7
+OK
+> place 0;5;3;4
+OK
+> place 14;3;3;15
+OK
+> place 8;6;5;10
+OK
+> place 1;5;5;7
+OK
+> place 5;12;10;2
+OK
+> place 5;4;13;11
+OK
+> place 2;9;9;14
+OK
+> place 4;7;9;6
+OK
+> place 10;15;5;14
+OK
+> place 8;0;0;4
+OK
+> place 7;6;6;12
+OK
+> place 10;0;13;6
+OK
+> place 1;3;5;2
+OK
+> place 14;11;9;5
+OK
+> place 16;1;14;14
+OK
+> place 15;10;0;1
+OK
+> place 5;16;12;14
+P2 wins
+> print
+P2 P1 P1 \*\* P1 P2 \*\* P1 \*\* P1 P1 P1 \*\* P1 \*\* P1 P1 P1
+\*\* \*\* P2 P2 P2 P1 P1 \*\* \*\* P1 \*\* P1 P2 P2 \*\* P2 P1 P1
+P2 \*\* \*\* P2 \*\* \*\* \*\* P2 P1 P2 P1 P1 \*\* P1 P2 P2 \*\* \*\*
+P1 P2 \*\* P2 P2 P2 \*\* \*\* \*\* \*\* \*\* P1 \*\* P2 \*\* P1 \*\* P2
+P2 P2 \*\* \*\* P2 \*\* \*\* P1 \*\* P1 \*\* P2 \*\* P2 P2 P1 \*\* \*\*
+P1 P2 P2 P1 P1 \*\* \*\* P1 \*\* P2 P2 \*\* P2 P2 P2 P2 P2 P2
+\*\* \*\* P1 \*\* P2 \*\* P1 P2 P1 \*\* P2 P1 P2 P2 \*\* P1 \*\* P1
+P1 P1 P2 P1 \*\* \*\* P2 P2 \*\* P1 \*\* \*\* \*\* P1 \*\* P1 P1 \*\*
+P1 \*\* \*\* P1 P2 \*\* P2 P2 \*\* P1 \*\* P1 P2 \*\* \*\* P2 \*\* P2
+P2 \*\* P2 P1 \*\* P1 P1 \*\* \*\* P2 \*\* \*\* P2 P2 P2 P2 \*\* \*\*
+P1 \*\* P2 \*\* \*\* P1 \*\* \*\* \*\* P1 \*\* \*\* \*\* \*\* P2 P2 \*\* P2
+P1 \*\* P2 P2 \*\* \*\* P1 P2 \*\* \*\* P1 \*\* \*\* P2 P1 \*\* P2 \*\*
+\*\* P2 \*\* P1 P1 \*\* \*\* P2 P2 P2 P1 \*\* P2 \*\* P2 P1 \*\* \*\*
+P1 P2 \*\* \*\* P2 P1 P1 \*\* \*\* P1 P1 P1 P1 \*\* P1 \*\* P2 P1
+P2 P2 \*\* P1 P1 \*\* \*\* \*\* P2 \*\* P1 P1 \*\* \*\* P2 \*\* \*\* P1
+P1 P2 P1 \*\* \*\* P2 P2 P1 \*\* \*\* P1 P1 \*\* \*\* P1 P1 P1 P2
+P2 P2 P1 P1 \*\* P2 P2 P1 P1 P1 \*\* \*\* P1 P1 P2 P1 \*\* P2
+P2 \*\* \*\* \*\* P1 P1 P2 \*\* P2 P2 P2 P2 P1 P2 \*\* \*\* P1 \*\*
+> quit
+$ standard-winning-tests finished
+$ 3885 lines finished
