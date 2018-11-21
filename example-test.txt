@@ -6,7 +6,7 @@
 Stuff done!
 
 > order 66
-Yedi .* is dead.
+Yedi .* is dead\.
 
 > findQuestion 42
 // Answer should be any String starting with "Error"
