@@ -16,10 +16,10 @@ ich habe mal die Terminal-Klasse umgeschrieben, dass man mit ihr auch Testen kan
 # Die Testdatei(en)
 In den Testdateien werden die Tests definiert.
 Codierung (auf Leerzeichen achten!):
- *  "# <Argumente>" startet die festgelegte main-Methode mit den Argumenten <Argumente>
- *  "> <Befehl>" übergibt den Befehl, wenn das nächste mal nachgefragt wird
- *  "$ <Botschaft>" Gibt die Botschaft in die Konsole aus (Zur Rückmeldung)
- *  "//<Kommentar>" Unbeachteter Kommentar
+ *  "# \<Argumente\>" startet die main-Methode mit den Argumenten \<Argumente\>
+ *  "> \<Befehl\>" übergibt den Befehl, wenn das nächste mal nachgefragt wird
+ *  "$ \<Botschaft\>" Gibt die Botschaft in die Konsole aus (Zur Rückmeldung)
+ *  "//\<Kommentar\>" Unbeachteter Kommentar
  *  der Rest wird als erwartete Ausgabe (als Pattern!!!) angesehen
 Wenn Ein/Ausgaben nicht stimmen wird das mit Zeilenangabe (und selten auch begründung) ausgegeben.
 	 
