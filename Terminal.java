@@ -98,7 +98,6 @@ public final class Terminal {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //BoardControlMain.main(tmp.getText().substring(2).split(" ")); //TODO
         } while (singleton != null);
     }
 
@@ -179,8 +178,12 @@ public final class Terminal {
             argsbuffer = tmp;
             issueError(new Line(linenumber, "<nothing>"), o.toString());
         } else {
-            if (!o.toString().matches(tmp.getText()))
-                issueError(tmp, o.toString());
+            try {
+                if (!o.toString().matches(tmp.getText()))
+                    issueError(tmp, o.toString());
+            } catch (Exception e){
+                System.out.println("Invalid Regex-Expression in Line "+tmp.getLine()+": "+tmp.getText());
+            }
         }
     }
 
